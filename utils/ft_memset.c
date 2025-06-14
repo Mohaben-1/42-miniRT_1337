@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 15:26:04 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:26:19 by ahouass          ###   ########.fr       */
+/*   Created: 2024/10/22 14:29:11 by ahouass           #+#    #+#             */
+/*   Updated: 2025/06/14 16:22:25 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*str;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		str[i] = (unsigned char)c;
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (str);
 }

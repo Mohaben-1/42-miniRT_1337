@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:51:48 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:30:33 by ahouass          ###   ########.fr       */
+/*   Updated: 2025/06/14 16:22:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 static void	ft_freeup(char **strs, int i)
 {

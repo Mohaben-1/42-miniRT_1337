@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 14:15:24 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:33:32 by ahouass          ###   ########.fr       */
+/*   Created: 2024/10/25 12:35:42 by ahouass           #+#    #+#             */
+/*   Updated: 2025/06/14 16:22:27 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int		i;
-	int		l;
-	char	*dest;
-
-	i = 0;
-	l = ft_strlen(s);
-	dest = (char *)malloc(l + 1);
-	if (!dest)
-		return (NULL);
-	while (s[i])
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	if (fd < 0)
+		return ;
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

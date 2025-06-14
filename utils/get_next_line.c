@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:23:06 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:35:37 by ahouass          ###   ########.fr       */
+/*   Updated: 2025/06/14 16:23:13 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42

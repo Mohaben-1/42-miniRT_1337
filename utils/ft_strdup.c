@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 14:29:11 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:34:08 by ahouass          ###   ########.fr       */
+/*   Created: 2024/10/23 14:15:24 by ahouass           #+#    #+#             */
+/*   Updated: 2025/06/14 16:22:42 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../minirt.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t			i;
-	unsigned char	*str;
+	int		i;
+	int		l;
+	char	*dest;
 
 	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+	l = ft_strlen(s);
+	dest = (char *)malloc(l + 1);
+	if (!dest)
+		return (NULL);
+	while (s[i])
 	{
-		str[i] = (unsigned char)c;
+		dest[i] = s[i];
 		i++;
 	}
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }

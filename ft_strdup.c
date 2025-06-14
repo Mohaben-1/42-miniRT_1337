@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:23:46 by ahouass          ###   ########.fr       */
+/*   Created: 2024/10/23 14:15:24 by ahouass           #+#    #+#             */
+/*   Updated: 2025/06/14 15:33:32 by ahouass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int ac, char **av)
+char	*ft_strdup(const char *s)
 {
-	// void	*mlx;
-	// void	*mlx_win;
-	// void	*mlx_img;
-	t_scene	*scene;
+	int		i;
+	int		l;
+	char	*dest;
 
-	if (ac != 2)
-		return 1;
-	scene = ft_parse_scene(av[1]);
-	if (!scene)
-		return 1;
-	return 0;
+	i = 0;
+	l = ft_strlen(s);
+	dest = (char *)malloc(l + 1);
+	if (!dest)
+		return (NULL);
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

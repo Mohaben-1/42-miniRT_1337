@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:23:46 by ahouass          ###   ########.fr       */
+/*   Created: 2024/10/22 14:29:11 by ahouass           #+#    #+#             */
+/*   Updated: 2025/06/14 15:34:08 by ahouass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int ac, char **av)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	// void	*mlx;
-	// void	*mlx_win;
-	// void	*mlx_img;
-	t_scene	*scene;
+	size_t			i;
+	unsigned char	*str;
 
-	if (ac != 2)
-		return 1;
-	scene = ft_parse_scene(av[1]);
-	if (!scene)
-		return 1;
-	return 0;
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		str[i] = (unsigned char)c;
+		i++;
+	}
+	return (str);
 }

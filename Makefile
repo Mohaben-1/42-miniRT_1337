@@ -1,8 +1,9 @@
 # Project Configuration
 NAME		= miniRT
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -O2 -DGL_SILENCE_DEPRECATION
 MLX_DIR		= minilibx
+MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Source files
@@ -17,7 +18,8 @@ SRCS		= ft_atof.c \
 			  ft_strcmp.c \
 			  ft_substr.c \
 			  ft_strdup.c \
-			  ft_memset.c
+			  ft_memset.c \
+			  print_scene.c
 
 # Object files
 OBJS		= $(SRCS:.c=.o)
@@ -32,8 +34,7 @@ NC			= \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@make -C $(MLX_DIR)
+$(NAME): $(OBJS) $(MLX_LIB)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(GREEN)Successfully compiled $(NAME)$(NC)"
 
@@ -43,7 +44,6 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
-	@make -C $(MLX_DIR) clean
 	@echo "$(RED)Removed object files$(NC)"
 
 fclean: clean

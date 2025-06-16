@@ -6,7 +6,7 @@
 /*   By: ahouass <ahouass@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 15:33:41 by ahouass          ###   ########.fr       */
+/*   Updated: 2025/06/16 15:48:36 by ahouass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ typedef struct s_scene
 	bool		has_ambient;
 	bool		has_camera;
 	bool		has_light;
+	int			win_width;
+	int			win_height;
 }	t_scene;
 
 t_scene	*ft_parse_scene(char *av);
@@ -123,5 +125,6 @@ int		ft_atoi(const char *str);
 void	ft_free_scene(t_scene *scene);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
+void	print_scene(t_scene *scene);
 
 #endif

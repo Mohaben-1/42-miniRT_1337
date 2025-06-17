@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:08:20 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:28 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:15:58 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vec3	vec_scale(t_vec3 v, double s)
 	return (scale);
 }
 
-double vec_dot(t_vec3 a, t_vec3 b)
+double	vec_dot(t_vec3 a, t_vec3 b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
@@ -52,7 +52,7 @@ double	vec_len(t_vec3 v)
 	return (sqrt(vec_dot(v, v)));
 }
 
-t_vec3 vec_normalize(t_vec3 v)
+t_vec3	vec_normalize(t_vec3 v)
 {
-    return (vec_scale(v, 1.0 / vec_len(v)));
+	return (vec_scale(v, 1.0 / vec_len(v)));
 }

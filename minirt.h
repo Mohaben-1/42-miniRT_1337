@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/17 20:48:16 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/17 20:53:28 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,9 @@ t_vec3	vec_scale(t_vec3 v, double s);
 double	vec_dot(t_vec3 a, t_vec3 b);
 double	vec_len(t_vec3 v);
 t_vec3	vec_normalize(t_vec3 v);
+
+
+void render_sphere(t_scene *scene)
+
 
 #endif

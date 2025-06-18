@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:14:23 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:27:42 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:51:57 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,7 +260,6 @@ void	ft_parse_line(t_scene *scene, char *line)
 
 	if (!line || line[0] == '\n' || line[0] == '#')
 		return;
-	
 	// Remove trailing newline
 	line[ft_strlen(line) - 1] = '\0';
 	
@@ -303,30 +302,26 @@ t_scene	*ft_parse_scene(char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
-	
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
 	ft_memset(scene, 0, sizeof(t_scene));
-	
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		
 		ft_parse_line(scene, line);
 		free(line);
 	}
-	
 	close(fd);
-	
-	// Validate required elements
 	if (!scene->has_ambient || !scene->has_camera || !scene->has_light)
 	{
+		printf("camera or light or ambient is missing\n");
 		ft_free_scene(scene);
 		return (NULL);
 	}
-	
+	scene->win_width = 1920;
+	scene->win_height = 1080;
 	return (scene);
 }

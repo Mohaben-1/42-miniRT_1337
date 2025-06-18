@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/17 20:53:28 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:51:16 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,6 @@ typedef struct s_scene
 	bool		has_ambient;
 	bool		has_camera;
 	bool		has_light;
-	void		*img;
-	char	*img_addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 }	t_scene;
 
 t_scene	*ft_parse_scene(char *av);
@@ -130,17 +125,5 @@ int		ft_atoi(const char *str);
 void	ft_free_scene(t_scene *scene);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
-
-//Vector operitatipns
-t_vec3	vec_add(t_vec3 a, t_vec3 b);
-t_vec3	vec_sub(t_vec3 a, t_vec3 b);
-t_vec3	vec_scale(t_vec3 v, double s);
-double	vec_dot(t_vec3 a, t_vec3 b);
-double	vec_len(t_vec3 v);
-t_vec3	vec_normalize(t_vec3 v);
-
-
-void render_sphere(t_scene *scene)
-
 
 #endif

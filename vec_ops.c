@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:08:20 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/06/17 20:15:58 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:45:03 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,14 @@ double	vec_len(t_vec3 v)
 t_vec3	vec_normalize(t_vec3 v)
 {
 	return (vec_scale(v, 1.0 / vec_len(v)));
+}
+
+t_vec3	vec_cross(t_vec3 a, t_vec3 b)
+{
+	t_vec3 result;
+
+	result.x = a.y * b.z - a.z * b.y;
+	result.y = a.z * b.x - a.x * b.z;
+	result.z = a.x * b.y - a.y * b.x;
+	return (result);
 }

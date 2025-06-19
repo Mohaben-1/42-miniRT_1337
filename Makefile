@@ -7,19 +7,21 @@ MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Source files
-SRCS		= ft_atof.c \
-			  ft_atoi.c \
+SRCS		= utils/ft_atof.c \
+			  utils/ft_atoi.c \
 			  main.c \
 			  parsing.c \
-			  ft_split.c \
-			  get_next_line.c \
-			  ft_strlen.c \
-			  ft_putstr_fd.c \
-			  ft_strcmp.c \
-			  ft_substr.c \
-			  ft_strdup.c \
-			  ft_memset.c \
-			  print_scene.c
+			  utils/ft_split.c \
+			  utils/get_next_line.c \
+			  utils/ft_strlen.c \
+			  utils/ft_putstr_fd.c \
+			  utils/ft_strcmp.c \
+			  utils/ft_substr.c \
+			  utils/ft_strdup.c \
+			  utils/ft_memset.c \
+			  print_scene.c \
+			  rendering.c \
+			  vec_ops.c 
 
 # Object files
 OBJS		= $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/18 16:51:16 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:43:21 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <math.h>
-# include <unistd.h>
+#include <unistd.h>
 
-# define SCREEN_WIDTH  800
-# define SCREEN_HEIGHT 600
 
 typedef struct s_vec3
 {
@@ -111,7 +109,28 @@ typedef struct s_scene
 	bool		has_ambient;
 	bool		has_camera;
 	bool		has_light;
+	int			win_width;
+	int			win_height;
 }	t_scene;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_img	img;
+	t_scene	*scene;
+}	t_mlx;
 
 t_scene	*ft_parse_scene(char *av);
 char	*get_next_line(int fd);
@@ -125,5 +144,23 @@ int		ft_atoi(const char *str);
 void	ft_free_scene(t_scene *scene);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
+
+
+void	print_scene(t_scene *scene);
+
+
+//mlx
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+//vector operations
+t_vec3	vec_add(t_vec3 a, t_vec3 b);
+t_vec3	vec_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec_scale(t_vec3 v, double s);
+double	vec_dot(t_vec3 a, t_vec3 b);
+double	vec_len(t_vec3 v);
+t_vec3	vec_normalize(t_vec3 v);
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
+
+void	render_scene(t_mlx *mlx);
 
 #endif

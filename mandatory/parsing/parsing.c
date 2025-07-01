@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:14:23 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/01 20:07:21 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:50:51 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,45 @@ void	parse_sphere(char *input, t_hit_table_list *world, t_rt *rt, int *i)
 	sphere->center = parse_vec(splited[1]);
 	sphere->radius = atof(splited[2]) / 2;
 	sphere->type = SPHERE;
-	sphere->material.ambient = rt->ambient;
-
+	sphere->material.ambient = rt->ambient.ratio;
+	sphere->material.diffuse = 0.9;
+	sphere->material.specular = 0;
+	sphere->material.shininess = 200;
+	sphere->material.color = parse_color(splited[3]);
+	free_dbl_ptr(splited);
+	hittable_list_add(world, sphere, *i, SPHERE);
+	(*i)++;
 }
 
-
-void	parse_sphere(char *input, t_hit_table_list *world, t_rt *rt, int *i)
+void	parse_cylinder(char *input, t_hit_table_list *lst, t_rt *rt, int *i)
 {
-	t_sphere	*sphere;
+	char		**splited;
+	t_cylinder	cy;
+
+	splited = ft_split(input, ' ');
+}
+void	parse_cylinder(char *ln, t_hittable_list *lst, t_minirt *minirt, int *i)
+{
+	t_cylinder	*cyl;
 	char		**split;
 
 	split = ft_split(ln, ' ');
-	sphere = ft_calloc(sizeof(t_sphere), 1);
-	sphere->center = parse_vector(split[1]);
-
-	sphere->radius = ft_atof(split[2]) / 2;
-	sphere->type = SPHERE;
-	sphere->m.ambient = minirt->ambient.ratio;
-	sphere->m.diffuse = 0.9;
-	sphere->m.specular = 0;
-	sphere->m.shininess = 200;
-	sphere->m.color = parse_color(split[3]);
+	cyl = ft_calloc(sizeof(t_cylinder), 1);
+	cyl->center = parse_vector(split[1]);
+	cyl->axis = parse_vector(split[2]);
+	cyl->radius = ft_atof(split[3]) / 2;
+	cyl->height = ft_atof(split[4]);
+	cyl->type = CYLINDER;
+	cyl->m.ambient = minirt->ambient.ratio;
+	cyl->m.diffuse = 0.9;
+	cyl->m.specular = 0;
+	cyl->m.shininess = 200;
+	cyl->m.color = parse_color(split[5]);
+	cyl->cap_top = vector_sum(cyl->center,
+			vector_mult(cyl->axis, cyl->height / 2.0));
+	cyl->cap_bottom = vector_sum(cyl->center,
+			vector_mult(cyl->axis, - (cyl->height / 2.0)));
+	hittable_list_add(lst, cyl, *i, CYLINDER);
 	ft_free_matrix((void **)split);
-	hittable_list_add(world, sphere, *i, SPHERE);
 	(*i)++;
 }

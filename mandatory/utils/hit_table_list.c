@@ -1,15 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_cylinder.c                                   :+:      :+:    :+:   */
+/*   hit_table_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 18:27:43 by etachott          #+#    #+#             */
-/*   Updated: 2025/07/01 20:49:35 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/01 20:48:12 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/01 20:48:44 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../includes/minirt.h"
 
+void	hittable_list_add(t_hit_table_list *list, void *obj, int index, int type)
+{
+	t_hit_table_node	*new;
 
+	new = ft_calloc(sizeof(t_hit_table_node), 1);
+	new->type = type;
+	new->object = obj;
+	new->next = list->head;
+	new->index = index;
+	list->head = new;
+}

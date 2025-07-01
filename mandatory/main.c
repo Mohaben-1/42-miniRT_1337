@@ -6,17 +6,17 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/18 20:35:48 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/06/24 20:42:06 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_texture *texture, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = texture->addr + (y * texture->line_len + x * (texture->bpp / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -96,7 +96,6 @@ void test_render(t_mlx *mlx)
 int	main(int ac, char **av)
 {
 	t_scene *scene;
-	t_mlx mlx;
 	
 	if (ac != 2)
 		return (print_error("Usage: ./miniRT scene.rt"), 1);

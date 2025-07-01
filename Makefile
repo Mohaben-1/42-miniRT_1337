@@ -1,8 +1,8 @@
 # Project Configuration
 NAME		= miniRT
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -O2 -DGL_SILENCE_DEPRECATION
-MLX_DIR		= minilibx
+CFLAGS		= -Wall -Wextra -Werror
+MLX_DIR		= mlx
 MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 

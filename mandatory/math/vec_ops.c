@@ -6,15 +6,25 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:08:20 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/06/19 19:45:03 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:08:48 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	vec_add(t_vec3 a, t_vec3 b)
+t_vec	vec_create(double x, double y, double z)
 {
-	t_vec3	add;
+	t_vec	new;
+
+	new.x = x;
+	new.y = y;
+	new.z = z;
+	return (new);
+}
+
+t_vec	vec_add(t_vec a, t_vec b)
+{
+	t_vec	add;
 
 	add.x = a.x + b.x;
 	add.y = a.y + b.y;
@@ -22,9 +32,9 @@ t_vec3	vec_add(t_vec3 a, t_vec3 b)
 	return (add);
 }
 
-t_vec3	vec_sub(t_vec3 a, t_vec3 b)
+t_vec	vec_sub(t_vec a, t_vec b)
 {
-	t_vec3	sub;
+	t_vec	sub;
 
 	sub.x = a.x - b.x;
 	sub.y = a.y - b.y;
@@ -32,9 +42,9 @@ t_vec3	vec_sub(t_vec3 a, t_vec3 b)
 	return (sub);
 }
 
-t_vec3	vec_scale(t_vec3 v, double s)
+t_vec	vec_scale(t_vec v, double s)
 {
-	t_vec3	scale;
+	t_vec	scale;
 
 	scale.x = v.x * s;
 	scale.y = v.y * s;
@@ -42,24 +52,24 @@ t_vec3	vec_scale(t_vec3 v, double s)
 	return (scale);
 }
 
-double	vec_dot(t_vec3 a, t_vec3 b)
+double	vec_dot(t_vec a, t_vec b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-double	vec_len(t_vec3 v)
+double	vec_len(t_vec v)
 {
 	return (sqrt(vec_dot(v, v)));
 }
 
-t_vec3	vec_normalize(t_vec3 v)
+t_vec	vec_normalize(t_vec v)
 {
 	return (vec_scale(v, 1.0 / vec_len(v)));
 }
 
-t_vec3	vec_cross(t_vec3 a, t_vec3 b)
+t_vec	vec_cross(t_vec a, t_vec b)
 {
-	t_vec3 result;
+	t_vec result;
 
 	result.x = a.y * b.z - a.z * b.y;
 	result.y = a.z * b.x - a.x * b.z;

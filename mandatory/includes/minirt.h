@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/01 20:48:49 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:56:05 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ char	*get_next_line(int fd);
 void	free_dbl_ptr(void **ptr);
 
 t_vec	vec_create(double x, double y, double z);
+
+
+
+
 
 void	hittable_list_add(t_hit_table_list *list, void *obj, int index, int type);
 

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:14:23 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/01 20:50:51 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:54:34 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,21 @@ void	parse_sphere(char *input, t_hit_table_list *world, t_rt *rt, int *i)
 void	parse_cylinder(char *input, t_hit_table_list *lst, t_rt *rt, int *i)
 {
 	char		**splited;
-	t_cylinder	cy;
+	t_cylinder	*cy;
 
 	splited = ft_split(input, ' ');
+	cy = ft_calloc(sizeof(t_cylinder), 1);
+	cy->center = parse_vec(splited[1]);
+	cy->axis = parse_vec(splited[2]);
+	cy->radius = ft_atof(splited[3]) / 2;
+	cy->height = ft_atof(splited[4]);
+	cy->type = CYLINDER;
+	cy->material.ambient = rt->ambient.ratio;
+	cy->material.diffuse = 0.9;
+	cy->material.specular = 0;
+	cy->material.shininess = 200;
+	cy->material.color = parse_color(splited[5]);
+	cy->cap_top = vec
 }
 void	parse_cylinder(char *ln, t_hittable_list *lst, t_minirt *minirt, int *i)
 {

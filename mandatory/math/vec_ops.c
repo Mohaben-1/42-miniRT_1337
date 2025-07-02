@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:08:20 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/01 20:08:48 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:22:10 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ t_vec	vec_create(double x, double y, double z)
 	new.x = x;
 	new.y = y;
 	new.z = z;
+	return (new);
+}
+
+t_color	color_create(double r, double g, double b)
+{
+	t_color	new;
+
+	new.r = r;
+	new.g = g;
+	new.b = b;
 	return (new);
 }
 

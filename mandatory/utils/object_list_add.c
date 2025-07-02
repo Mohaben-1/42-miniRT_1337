@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_table_list.c                                   :+:      :+:    :+:   */
+/*   object_list_add.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:48:12 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/01 20:48:44 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:11:39 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	hittable_list_add(t_hit_table_list *list, void *obj, int index, int type)
+void	object_list_add(t_object_list *list, void *obj, int id, int type)
 {
-	t_hit_table_node	*new;
+	t_object	*new;
 
-	new = ft_calloc(sizeof(t_hit_table_node), 1);
+	new = ft_calloc(sizeof(t_object), 1);
 	new->type = type;
-	new->object = obj;
+	new->id = id;
 	new->next = list->head;
-	new->index = index;
+	if (type == OBJ_SPHERE)
+		new->sphere = (t_sphere *)obj;
+	else if (type == OBJ_PLANE)
+		new->plane = (t_plane *)obj;
+	else if (type == OBJ_CYLINDER)
+		new->cylinder = (t_cylinder *)obj;
+	// else if (type == OBJ_CONE)
+	//     new->cone = (t_cone *)obj;
 	list->head = new;
 }
+

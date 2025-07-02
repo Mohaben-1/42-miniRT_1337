@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:23:06 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:23:13 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:47 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42

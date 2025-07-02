@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:18:41 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:23 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:15 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 int	ft_atoi(const char *str)
 {

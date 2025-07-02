@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 12:11:21 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:24:25 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,6 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*window;
 }	t_mlx;
-
-typedef struct s_rt
-{
-	t_mlx				mlx;
-	t_img				img;
-	t_camera			camera;
-	t_ambient			ambient;
-	t_light				light;
-	t_object_list		*world;
-}	t_rt;
-
 
 typedef struct s_vec
 {
@@ -220,5 +209,15 @@ typedef struct s_lighting
 	t_vec		eyev;
 	t_vec		normal;
 }	t_lighting;
+
+typedef struct s_rt
+{
+	t_mlx				mlx;
+	t_img				img;
+	t_camera			camera;
+	t_ambient			ambient;
+	t_light				light;
+	t_object_list		*scene;
+}	t_rt;
 
 #endif

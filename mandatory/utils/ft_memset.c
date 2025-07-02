@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:29:11 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:25 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:23 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

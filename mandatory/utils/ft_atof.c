@@ -6,22 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 15:14:36 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:20 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:42:23 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
-
-static int	ft_isspace(int c)
-{
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r');
-}
-
-static int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
+#include "../includes/minirt.h"
 
 double	ft_atof(const char *str)
 {

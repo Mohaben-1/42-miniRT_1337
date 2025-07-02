@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:15:24 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:42 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:35 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 char	*ft_strdup(const char *s)
 {

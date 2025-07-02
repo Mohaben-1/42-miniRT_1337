@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:51:48 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:32 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:30 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 static void	ft_freeup(char **strs, int i)
 {

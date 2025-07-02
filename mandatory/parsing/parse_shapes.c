@@ -6,13 +6,13 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 12:31:01 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:25:16 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-void	parse_sphere(char *input, t_object_list *world, t_rt *rt, int *i)
+void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *i)
 {
 	char		**splited;
 	t_sphere	*sphere;
@@ -27,8 +27,8 @@ void	parse_sphere(char *input, t_object_list *world, t_rt *rt, int *i)
 	sphere->material.specular = 0;
 	sphere->material.shininess = 200;
 	sphere->material.color = parse_color(splited[3]);
-	object_list_add(world, sphere, *i, OBJ_SPHERE);
-	free_dbl_ptr(splited);
+	object_list_add(scene, sphere, *i, OBJ_SPHERE);
+	free_dbl_ptr((void **)splited);
 	(*i)++;
 }
 
@@ -52,11 +52,11 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *i)
 	cy->cap_top = vec_add(cy->center, vec_scale(cy->axis, cy->height / 2.0));
 	cy->cap_bottom = vec_add(cy->center, vec_scale(cy->axis, -(cy->height / 2.0)));
 	object_list_add(lst, cy, *i, OBJ_CYLINDER);
-	free_dbl_ptr(splited);
+	free_dbl_ptr((void **)splited);
 	(*i)++;
 }
 
-void	parse_plane(char *input, t_object_list *world, t_rt *rt, int *i)
+void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *i)
 {
 	char	**splited;
 	t_plane	*pl;
@@ -71,7 +71,7 @@ void	parse_plane(char *input, t_object_list *world, t_rt *rt, int *i)
 	pl->material.specular = 0;
 	pl->material.shininess = 200;
 	pl->material.color = parse_color(splited[3]);
-	object_list_add(world, pl, *i, OBJ_PLANE);
-	free_dbl_ptr(splited);
+	object_list_add(scene, pl, *i, OBJ_PLANE);
+	free_dbl_ptr((void **)splited);
 	(*i)++;
 }

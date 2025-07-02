@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:08:20 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 12:22:10 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:28:53 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../includes/minirt.h"
 
 t_vec	vec_create(double x, double y, double z)
 {

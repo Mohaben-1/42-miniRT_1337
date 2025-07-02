@@ -6,11 +6,18 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:35:42 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:27 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:31:23 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(1, &c, 1);
+}
 
 void	ft_putstr_fd(char *s, int fd)
 {

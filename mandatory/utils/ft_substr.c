@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:33:32 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:50 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:44 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

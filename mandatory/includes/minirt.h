@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/02 12:45:53 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:31:31 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,23 @@
 # define WIDTH 1900.0
 # define HEIGHT 1100.0
 
-
+// Utils
+void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 size_t	ft_strlen(const char	*str);
+int		ft_count_args(char **args);
+int		ft_isdigit(int c);
+int		ft_isalpha(int c);
+int		ft_isalnum(int c);
 double	ft_atof(const char *str);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_isspace(char c);
+int		ft_empty_str(char *str);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 char	**ft_split(char const *s, char c);
@@ -39,9 +48,26 @@ t_vec	parse_vec(char *input);
 void	parse_camera(char *input, t_camera *camera);
 void	parse_ambient(char *input, t_ambient *ambient);
 void	parse_light(char *input, t_light *light);
-void	parse_sphere(char *input, t_object_list *world, t_rt *rt, int *i);
+void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *i);
 void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *i);
-void	parse_plane(char *input, t_object_list *world, t_rt *rt, int *i);
+void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *i);
+
+int		check_args(int ac, char *file);
+int		check_file(char *file);
+int		check_position(char *position);
+int 	check_vec(char **vec);
+int		check_normal(char *normal);
+int		check_float(char *line);
+int		check_double(char *line);
+int		check_commas(char *line);
+int		check_ratio(char *line);
+int		check_color(char *line);
+int		check_ambient(char *line);
+int		check_camera(char *line);
+int		check_light(char *line);
+int		check_sphere(char *line);
+int		check_plane(char *line);
+int		check_cylinder(char *line);
 
 
 t_color	color_create(double r, double g, double b);

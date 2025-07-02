@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:39:59 by ahouass           #+#    #+#             */
-/*   Updated: 2025/06/14 16:22:44 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:29:38 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minirt.h"
+#include "../includes/minirt.h"
 
 size_t	ft_strlen(const char	*str)
 {

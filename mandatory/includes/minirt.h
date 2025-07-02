@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/02 20:31:31 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 23:20:56 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,12 @@ t_vec	vec_normalize(t_vec v);
 t_vec	vec_cross(t_vec a, t_vec b);
 
 void	object_list_add(t_object_list *list, void *obj, int id, int type);
+
+void ft_mlx_init(t_rt *rt);
+void ft_mlx_events(t_rt *rt);
+
+void  init_rt(t_rt *rt, int fd);
+void  create_scene(t_rt *rt, int fd);
+
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 20:24:25 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/02 23:25:38 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_img
 
 typedef struct s_mlx
 {
-	void	*mlx;
+	void	*ptr;
 	void	*window;
 }	t_mlx;
 
@@ -43,7 +43,7 @@ typedef struct s_vec
 }	t_vec;
 
 
-typedef struct d_color
+typedef struct s_color
 {
 	float	r;
 	float	g;

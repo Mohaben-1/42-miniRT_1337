@@ -12,7 +12,7 @@ SRCS		= mandatory/main.c \
 			mandatory/parsing/parse_elements.c mandatory/parsing/parse_shapes.c \
 			mandatory/math/vec_ops.c \
 			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c  mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list_add.c \
-			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/isalnum.c
+			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/ft_isalnum.c
 
 # Object files
 OBJS		= $(SRCS:.c=.o)

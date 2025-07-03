@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 14:58:33 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:26:34 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,30 @@ int	check_required_elements(int fd)
 	return (1);
 }
 
+int	check_valid_line(char *line, int line_num)
+{
+	int	i;
+
+	i = 0;
+
+	while (line[i])
+	{
+		if (line[i] == '\r' || line[i] == '\t')
+		{
+			ft_putstr_fd("Error\nInvalid character found at line: ", 2);
+			ft_putnbr_fd(line_num, 2);
+			ft_putstr_fd(" please use spaces instead\n", 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int check_line(char *line, int line_num)
 {
+	if (!check_valid_line(line, line_num))
+		return (0);
 	if (!ft_strncmp(line, "C ", 2))
 		return (check_camera(line));
 	else if (!ft_strncmp(line, "A ", 2))

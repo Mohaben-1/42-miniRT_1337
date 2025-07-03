@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:24:09 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 16:11:53 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:11:48 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	check_cone(char *line)
 	char	**splited;
 	int		arg_count;
 
+	trim_trailing_whitespace_line(line);
 	splited = ft_split(line, ' ');
 	if (!splited)
 		return (0);

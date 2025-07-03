@@ -6,13 +6,13 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:58:37 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 13:31:44 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:11:54 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-int	check_cy_vals(char **splited)
+int	check_cy_vals(char **splited, int arg_count)
 {
 	if (!check_position(splited[1]))
 	{
@@ -39,23 +39,35 @@ int	check_cy_vals(char **splited)
 		ft_putstr_fd("Error\nInvalid cylinder color: expected RGB format 'r,g,b' between 0 and 255.\n", 2);
 		return (0);
 	}
+	if (arg_count == 7)
+	{
+		if (!check_texture(splited[6]))
+			return (0);
+	}
 	return (1);
 }
 
 int	check_cylinder(char *line)
 {
 	char	**splited;
+	int		arg_count;
 
+	trim_trailing_whitespace_line(line);
 	splited = ft_split(line, ' ');
 	if (!splited)
 		return (0);
-	if (ft_count_args(splited) != 6)
+	arg_count = ft_count_args(splited);
+	if (arg_count != 6 && arg_count != 7)
 	{
-		ft_putstr_fd("Error\nInvalid cylinder: expected format 'cy center_x,y,z axis_x,y,z diameter height r,g,b'\n", 2);
-		return (free_dbl_ptr((void **)splited), 0);
+		ft_putstr_fd("Error\nInvalid cylinder: expected format 'cy center_x,y,z axis_x,y,z diameter height r,g,b [texture_path]'\n", 2);
+		free_dbl_ptr((void **)splited);
+		return (0);
 	}
-	if (!check_cy_vals(splited))
-		return (free_dbl_ptr((void **)splited), 0);
+	if (!check_cy_vals(splited, arg_count))
+	{
+		free_dbl_ptr((void **)splited);
+		return (0);
+	}
 	free_dbl_ptr((void **)splited);
 	return (1);
 }

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_texture_bonus.c                              :+:      :+:    :+:   */
+/*   ft_trim_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 16:12:13 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 17:51:42 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/03 18:09:41 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/03 18:10:15 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-int	check_texture(char *texture)
+void trim_trailing_whitespace_line(char *line)
 {
-	size_t	len;
+	int i;
 
-	if (!texture)
-		return (0);
-	if (!ft_strncmp(texture, "tx:", 3))
-		texture += 3;
-	len = ft_strlen(texture);
-	if (len < 4 || ft_strncmp(texture + len - 4, ".xpm", 4) != 0)
+	i = ft_strlen(line) - 1;
+	while (i >= 0 && (line[i] == ' ' || line[i] == '\n'))
 	{
-		ft_putstr_fd("Error\nInvalid texture format: Only '.xpm' is supported by MiniLibX.\n", 2);
-		return (0);
+		line[i] = '\0';
+		i--;
 	}
-	if (access(texture, R_OK) != 0)
-	{
-		ft_putstr_fd("Error\nTexture file not found or unreadable.\n", 2);
-		return (0);
-	}
-	return (1);
 }

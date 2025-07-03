@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/03 16:39:26 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 18:13:01 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
+void	trim_trailing_whitespace_line(char *line);
 void	free_dbl_ptr(void **ptr);
 
 

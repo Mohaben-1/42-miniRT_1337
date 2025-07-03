@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/03 12:52:30 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 17:52:44 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	t_rt			rt;
 	int				fd;
 
-	atexit(ff);
+	// atexit(ff);
 	if (!check_args(ac, av[1]) || !check_file(av[1]))
 		return (1);
 	ft_bzero(&rt, 1);

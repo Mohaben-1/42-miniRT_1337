@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/02 23:20:56 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/03 11:34:16 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 size_t	ft_strlen(const char	*str);
+void	ft_bzero(void *s, size_t n);
 int		ft_count_args(char **args);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
@@ -48,9 +49,9 @@ t_vec	parse_vec(char *input);
 void	parse_camera(char *input, t_camera *camera);
 void	parse_ambient(char *input, t_ambient *ambient);
 void	parse_light(char *input, t_light *light);
-void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *i);
-void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *i);
-void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *i);
+void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id);
+void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id);
+void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *id);
 
 int		check_args(int ac, char *file);
 int		check_file(char *file);
@@ -90,5 +91,7 @@ void ft_mlx_events(t_rt *rt);
 void  init_rt(t_rt *rt, int fd);
 void  create_scene(t_rt *rt, int fd);
 
+
+int	handle_close(t_rt *rt);
 
 #endif

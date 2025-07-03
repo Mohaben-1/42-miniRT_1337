@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:21:47 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:02:53 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,8 @@ typedef struct s_quadratic
 	double	b;
 	double	c;
 	double	discriminant;
-	double	root[2];
+	double	root1;
+	double	root2;
 }	t_quadratic;
 
 typedef struct s_lighting

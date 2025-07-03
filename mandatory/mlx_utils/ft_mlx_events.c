@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:46:59 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:56:00 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	handle_close(t_rt *rt)
 {
 	mlx_destroy_image(rt->mlx.ptr, rt->img.img);
 	mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
-	free(rt->scene);
+	free_object_list(rt->scene);
 	exit(0);
 }
 

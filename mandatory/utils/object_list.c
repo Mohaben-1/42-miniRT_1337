@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_list_add.c                                  :+:      :+:    :+:   */
+/*   object_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:48:12 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 20:29:56 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:55:11 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,23 @@ void	object_list_add(t_object_list *list, void *obj, int id, int type)
 	list->head = new;
 }
 
+void	free_object_list(t_object_list *list)
+{
+	t_object	*tmp;
+
+	while (list && list->head)
+	{
+		tmp = list->head;
+		list->head = tmp->next;
+		if (tmp->type == OBJ_SPHERE)
+			free(tmp->sphere);
+		else if (tmp->type == OBJ_PLANE)
+			free(tmp->plane);
+		else if (tmp->type == OBJ_CYLINDER)
+			free(tmp->cylinder);
+		// else if (tmp->type == OBJ_CONE)
+		//     free(tmp->cone);
+		free(tmp);
+	}
+	free(list);
+}

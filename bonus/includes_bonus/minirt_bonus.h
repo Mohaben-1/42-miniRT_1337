@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/03 18:13:01 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:17:02 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_color	parse_color(char *input);
 t_vec	parse_vec(char *input);
 void	parse_camera(char *input, t_camera *camera);
 void	parse_ambient(char *input, t_ambient *ambient);
-void	parse_light(char *input, t_light *light);
+void	parse_light(char *input, t_light_list **lights);
 void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id);
 void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id);
 void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *id);

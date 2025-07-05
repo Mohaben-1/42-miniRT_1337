@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:56:40 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:45:25 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id)
 void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 {
 	char		**splited;
+	int			arg_count;
 	t_cylinder	*cy;
 
 	splited = ft_split(input, ' ');
+	arg_count = ft_count_args(splited);
 	cy = ft_calloc(1, sizeof(t_cylinder));
 	cy->center = parse_vec(splited[1]);
 	cy->axis = parse_vec(splited[2]);
@@ -51,6 +53,12 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->material.color = parse_color(splited[5]);
 	cy->cap_top = vec_add(cy->center, vec_scale(cy->axis, cy->height / 2.0));
 	cy->cap_bottom = vec_add(cy->center, vec_scale(cy->axis, -(cy->height / 2.0)));
+	if (arg_count >= 7)
+	{
+		
+	}
+	else
+		cy->material.texture_type = TEX_NONE;
 	object_list_add(lst, cy, *id, OBJ_CYLINDER);
 	free_dbl_ptr((void **)splited);
 	(*id)++;

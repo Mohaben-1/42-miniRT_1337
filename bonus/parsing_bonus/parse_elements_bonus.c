@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:14:23 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/03 12:56:37 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:22:14 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,17 @@ void	parse_ambient(char *input, t_ambient *ambient)
 	free_dbl_ptr((void **)splited);
 }
 
-void	parse_light(char *input, t_light *light)
+void	parse_light(char *input, t_light_list **lights)
 {
-	char	**splited;
+	t_light_list	*new_light;
+	char			**splited;
 
 	splited = ft_split(input, ' ');
-	light->position = parse_vec(splited[1]);
-	light->intensity = ft_atof(splited[2]);
-	light->color = color_create(1, 1, 1);
+	new_light = ft_calloc(1, sizeof(t_light_list));
+	new_light->light.position = parse_vec(splited[1]);
+	new_light->light.intensity = ft_atof(splited[2]);
+	new_light->light.color = parse_color(splited[3]);
+	new_light->next = *lights;
+	*lights = new_light;
 	free_dbl_ptr((void **)splited);
 }

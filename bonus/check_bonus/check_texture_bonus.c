@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:12:13 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/04 16:47:07 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 20:27:11 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int	check_texture(char *texture)
 	}
 	len = ft_strlen(texture);
 	if (len < 4 || ft_strncmp(texture + len - 4, ".xpm", 4) != 0)
-	{
-		ft_putstr_fd("Error\nInvalid texture format: Only '.xpm' is supported by MiniLibX.\n", 2);
 		return (0);
-	}
 	if (access(texture, R_OK) != 0)
 	{
 		ft_putstr_fd("Error\nTexture file not found or unreadable.\n", 2);

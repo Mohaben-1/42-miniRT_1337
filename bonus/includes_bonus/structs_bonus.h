@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 16:30:08 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:23:10 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ typedef struct s_rt
 	t_img				img;
 	t_camera			camera;
 	t_ambient			ambient;
-	t_light_list		lights;
+	t_light_list		*lights;
 	t_object_list		*scene;
 }	t_rt;
 

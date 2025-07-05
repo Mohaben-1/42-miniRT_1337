@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:56:26 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 16:43:27 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 17:16:27 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	parse_line(t_rt *rt, char *line, int *id)
 		parse_camera(line, &rt->camera);
 	else if (ft_strncmp(line, "A", 1) == 0)
 		parse_ambient(line, &rt->ambient);
-	// else if (ft_strncmp(line, "L", 1) == 0)
-	// 	parse_light(line, &rt->lights);
+	else if (ft_strncmp(line, "L", 1) == 0)
+		parse_light(line, &rt->lights);
 	else if (ft_strncmp(line, "sp", 2) == 0)
 		parse_sphere(line, rt->scene, rt, id);
 	else if (ft_strncmp(line, "cy", 2) == 0)

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:57:32 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 13:07:25 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ typedef struct s_vec
 	float	z;
 }	t_vec;
 
-
 typedef struct s_color
 {
 	float	r;
 	float	g;
 	float	b;
 }	t_color;
-
 
 typedef struct s_light
 {
@@ -94,13 +92,23 @@ typedef struct s_hit_data
 	int		skip_id;        // ID of object to skip (e.g., in shadow rays)
 }	t_hit_data;
 
+typedef enum e_texture_type
+{
+	TEX_NONE,
+	TEX_CHECKER,
+	TEX_IMAGE,
+	TEX_BUMP
+}	t_texture_type;
+
 typedef struct s_material
 {
-	t_color	color;
-	double	ambient;
-	double	diffuse;
-	double	specular;
-	double	shininess;
+	t_color			color;
+	double			ambient;
+	double			diffuse;
+	double			specular;
+	double			shininess;
+	t_texture_type	texture_type;  // NEW
+	char			*texture_path; // for image textures
 }	t_material;
 
 typedef struct s_sphere
@@ -168,6 +176,11 @@ typedef struct s_object_list
 	t_object	*head;
 }	t_object_list;
 
+typedef struct s_light_list
+{
+	t_light				light;
+	struct s_light_list	*next;
+}	t_light_list;
 
 typedef struct s_ray
 {
@@ -219,7 +232,7 @@ typedef struct s_rt
 	t_img				img;
 	t_camera			camera;
 	t_ambient			ambient;
-	t_light				light;
+	t_light_list		lights;
 	t_object_list		*scene;
 }	t_rt;
 

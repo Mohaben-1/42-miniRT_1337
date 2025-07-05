@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:22:00 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:57:03 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 12:56:46 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_mlx_init_helper(t_rt *rt)
     ft_putstr_fd("Error\nFailed to initialize MLX!\n", 2);
     exit(EXIT_FAILURE);
   }
-  rt->mlx.window = mlx_new_window(rt->mlx.ptr, WIDTH, HEIGHT, "MiniRT (aba hayat khay)");
+  rt->mlx.window = mlx_new_window(rt->mlx.ptr, WIDTH, HEIGHT, "MiniRT (aba bonus khay)");
   if (!rt->mlx.window)
   {
     ft_putstr_fd("Error\nFailed to initialize MLX!\n", 2);

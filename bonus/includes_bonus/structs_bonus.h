@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 13:07:25 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/05 16:30:08 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef enum e_texture_type
 {
 	TEX_NONE,
 	TEX_CHECKER,
-	TEX_IMAGE,
 	TEX_BUMP
 }	t_texture_type;
 
@@ -107,8 +106,7 @@ typedef struct s_material
 	double			diffuse;
 	double			specular;
 	double			shininess;
-	t_texture_type	texture_type;  // NEW
-	char			*texture_path; // for image textures
+	t_texture_type	texture_type;
 }	t_material;
 
 typedef struct s_sphere

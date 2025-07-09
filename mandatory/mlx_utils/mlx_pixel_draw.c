@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_pixel_draw.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 15:56:10 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/06 13:11:26 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/08 20:36:35 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	main(int ac, char **av)
+void	mlx_pixel_draw(t_img *image, int x, int y, int color)
 {
-	t_rt	rt;
-	int		fd;
+	char	*pixel;
 
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	pixel = image->addr + (y * image->line_len + x * (image->bpp / 8));
+	*(int *)pixel = color;
 }

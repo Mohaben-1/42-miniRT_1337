@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   determine_surface_normal.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 15:56:10 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/06 12:35:04 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/08 15:52:22 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	main(int ac, char **av)
+void	determine_surface_normal(t_hit_data *rec, t_ray *ray, t_vec *out_normal)
 {
-	t_rt	rt;
-	int		fd;
-
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	rec->is_front_face = vec_dot(ray->direction, *out_normal) < 0;
+	if (rec->is_front_face)
+		rec->normal = *out_normal;
+	else
+		rec->normal = vec_negative(out_normal);
 }

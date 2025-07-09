@@ -2,18 +2,25 @@
 NAME		= miniRT
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-MLX_DIR		= mandatory/mlx
+MLX_DIR		= mlx
 MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Source files
 SRCS		= mandatory/main.c \
-			mandatory/check/check_ambient.c mandatory/check/check_arg.c mandatory/check/check_camera.c mandatory/check/check_cylinder.c mandatory/check/check_light.c mandatory/check/check_plane.c mandatory/check/check_sphere.c mandatory/check/check_utils.c \
+			mandatory/check/check_ambient.c mandatory/check/check_arg.c mandatory/check/check_camera.c mandatory/check/check_cylinder.c mandatory/check/check_light.c \
+			mandatory/check/check_plane.c mandatory/check/check_sphere.c mandatory/check/check_utils.c mandatory/check/check_utils2.c mandatory/check/check_vecs.c \
 			mandatory/parsing/parse_elements.c mandatory/parsing/parse_shapes.c mandatory/parsing/init_rt.c mandatory/parsing/create_scene.c \
-			mandatory/math/vec_ops.c \
-			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c \
-			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c  mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list.c \
+			mandatory/math/vec_ops.c mandatory/math/vec_ops_2.c mandatory/math/vec_create.c mandatory/math/vec_utils.c \
+			mandatory/rendring/color_rgb.c mandatory/rendring/cylinder_utils2.c mandatory/rendring/hit_cylinder.c mandatory/rendring/hit_plane.c \
+			mandatory/rendring/hit_sphere.c mandatory/rendring/hit_detection.c mandatory/rendring/lighting.c mandatory/rendring/ray_color.c \
+			mandatory/rendring/render_scene.c mandatory/rendring/rendering.c mandatory/rendring/determine_surface_normal.c \
+			mandatory/rendring/project_onto_plane.c mandatory/rendring/cylinder_utils.c mandatory/rendring/ray_shadow.c \
+			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c mandatory/mlx_utils/mlx_pixel_draw.c mandatory/mlx_utils/mlx_image_to_window.c  \
+			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c \
+			mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list.c mandatory/utils/ft_strjoin.c mandatory/utils/ft_strchr.c \
 			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/ft_isalnum.c
+
 
 SRCS_BNS =  bonus/main_bonus.c \
 			bonus/check_bonus/check_ambient_bonus.c bonus/check_bonus/check_arg_bonus.c bonus/check_bonus/check_camera_bonus.c bonus/check_bonus/check_cylinder_bonus.c bonus/check_bonus/check_light_bonus.c bonus/check_bonus/check_plane_bonus.c bonus/check_bonus/check_sphere_bonus.c bonus/check_bonus/check_utils_bonus.c bonus/check_bonus/check_cone_bonus.c bonus/check_bonus/check_texture_bonus.c \
@@ -50,7 +57,7 @@ bonus: $(OBJS_BNS) $(MLX_LIB)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(GREEN)Compiled $<$(NC)"
 
-%.o: %.c mandatory/includes/minirt.h  mandatory/includes/structs.h
+%.o: %.c mandatory/includes/minirt.h  mandatory/includes/structs.h mandatory/includes/errors.h
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "$(GREEN)Compiled $<$(NC)"
 

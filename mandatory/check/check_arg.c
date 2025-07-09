@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 20:26:12 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:51:48 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 int	check_args(int ac, char *file)
 {
-	size_t len;
+	size_t	len;
 
 	if (ac != 2)
 	{
-		ft_putstr_fd("Error\nIncorrect number of arguments. Usage: ./program scene.rt\n", 2);
+		ft_putstr_fd("Error\nIncorrect number of arguments.", 2);
+		ft_putstr_fd(" Usage: ./program scene.rt\n", 2);
 		return (0);
 	}
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp(file + len - 3, ".rt", 3) != 0)
 	{
-		ft_putstr_fd("Error\nInvalid file extension: Expected a file with the '.rt' extension.\n", 2);
+		ft_putstr_fd("Error\nInvalid file extension: ", 2);
+		ft_putstr_fd("Expected a file with the '.rt' extension.\n", 2);
 		return (0);
 	}
 	return (1);
@@ -48,25 +50,25 @@ int	check_required_elements(int fd)
 	close(fd);
 	if (count != 3)
 	{
-		ft_putstr_fd("Error\nScene file must contain exactly one Ambient (A), one Camera (C), and one Light (L) definition.\n", 2);
+		ft_putstr_fd(ERR_REQUIRED1 ERR_REQUIRED2, 2);
 		return (0);
 	}
 	return (1);
 }
 
-int check_line(char *line, int line_num)
+int	check_line(char *line, int line_num)
 {
-	if (line[0] == 'C' && line[1] == ' ')
+	if (!ft_strncmp(line, "C ", 2))
 		return (check_camera(line));
-	else if (line[0] == 'A' && line[1] == ' ')
+	else if (!ft_strncmp(line, "A ", 2))
 		return (check_ambient(line));
-	else if (line[0] == 'L' && line[1] == ' ')
+	else if (!ft_strncmp(line, "L ", 2))
 		return (check_light(line));
-	else if (line[0] == 's' && line[1] == 'p' && line[2] == ' ')
+	else if (!ft_strncmp(line, "sp ", 3))
 		return (check_sphere(line));
-	else if (line[0] == 'p' && line[1] == 'l' && line[2] == ' ')
+	else if (!ft_strncmp(line, "pl ", 3))
 		return (check_plane(line));
-	else if (line[0] == 'c' && line[1] == 'y' && line[2] == ' ')
+	else if (!ft_strncmp(line, "cy ", 3))
 		return (check_cylinder(line));
 	else if (!ft_empty_str(line))
 	{
@@ -81,13 +83,13 @@ int check_line(char *line, int line_num)
 int	check_file(char *file)
 {
 	char	*line;
-	int 	line_num;
+	int		line_num;
 	int		check;
 	int		fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (ft_putstr_fd("Error\nFailed to open file: file not found or permission denied\n", 2), 0);
+		return (ft_putstr_fd(ERR_FD1 ERR_FD2, 2), 0);
 	if (!check_required_elements(fd))
 		return (0);
 	fd = open(file, O_RDONLY);
@@ -103,5 +105,6 @@ int	check_file(char *file)
 		free(line);
 		line_num++;
 	}
+	close(fd);
 	return (check);
 }

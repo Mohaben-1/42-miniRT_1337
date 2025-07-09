@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color_rgb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 15:56:10 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/06 13:12:49 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/07 12:53:35 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	main(int ac, char **av)
+unsigned long	color_rgb(t_color *color)
 {
-	t_rt	rt;
-	int		fd;
+	int	r;
+	int	g;
+	int	b;
 
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	r = (int)(255.999 * color->r);
+	g = (int)(255.999 * color->g);
+	b = (int)(255.999 * color->b);
+	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:32:55 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:37:52 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->material.shininess = 200;
 	cy->material.color = parse_color(splited[5]);
 	cy->cap_top = vec_add(cy->center, vec_scale(cy->axis, cy->height / 2.0));
-	cy->cap_bottom = vec_add(cy->center, vec_scale(cy->axis, -(cy->height / 2.0)));
+	cy->cap_bottom = vec_add(cy->center,
+			vec_scale(cy->axis, -(cy->height / 2.0)));
 	object_list_add(lst, cy, *id, OBJ_CYLINDER);
 	free_dbl_ptr((void **)splited);
 	(*id)++;

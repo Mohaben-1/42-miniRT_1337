@@ -6,12 +6,12 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:02:53 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/08 20:34:58 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	STRUCTS_H
-#define STRUCTS_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 # include <stdlib.h>
 # include <fcntl.h>
@@ -19,6 +19,16 @@
 # include <unistd.h>
 # include <math.h>
 # include <mlx.h>
+
+# define TITLE "MiniRT (aba hayat khay)"
+# define WIDTH 1900.0
+# define HEIGHT 1100.0
+# define PI 3.1415926535897932385
+
+# define AMBIENT 0
+# define DIFFUSE 1
+# define SPECULAR 2
+# define RESULT 3
 
 typedef struct s_img
 {
@@ -37,19 +47,24 @@ typedef struct s_mlx
 
 typedef struct s_vec
 {
-	float	x;
-	float	y;
-	float	z;
+	union
+	{
+		struct
+		{
+			float	x;
+			float	y;
+			float	z;
+		};
+		struct
+		{
+			float	r;
+			float	g;
+			float	b;
+		};
+	};
 }	t_vec;
 
-
-typedef struct s_color
-{
-	float	r;
-	float	g;
-	float	b;
-}	t_color;
-
+typedef t_vec	t_color;
 
 typedef struct s_light
 {
@@ -73,9 +88,9 @@ typedef struct s_camera
 	t_vec	horizontal;
 	t_vec	vertical;
 	t_vec	lower_left_corner;
-	t_vec	view_up; // up vector (view_up)
-	t_vec	origin; // camera position (look_from)
-	t_vec	target; // what the camera is looking at (look_at)
+	t_vec	view_up;
+	t_vec	origin;
+	t_vec	target;
 }	t_camera;
 
 typedef struct s_ambient
@@ -84,13 +99,14 @@ typedef struct s_ambient
 	double	ratio;
 }	t_ambient;
 
-typedef struct s_hit_data {
-	t_vec	point;          // Where the ray hit
-	t_vec	normal;         // Surface normal at the hit point
-	double	t;              // Ray parameter at the hit
-	bool	is_front_face;  // True if the hit is on the outside
-	int		object_id;      // ID/index of the object hit
-	int		skip_id;        // ID of object to skip (e.g., in shadow rays)
+typedef struct s_hit_data
+{
+	t_vec	point;
+	t_vec	normal;
+	double	t;
+	bool	is_front_face;
+	int		object_id;
+	int		skip_id;
 }	t_hit_data;
 
 typedef struct s_material
@@ -122,16 +138,6 @@ typedef struct s_cylinder
 	t_material	material;
 }	t_cylinder;
 
-// typedef struct s_cone
-// {
-// 	t_vec		vertex;
-// 	t_vec		axis;
-// 	double		h;
-// 	double		angle;
-// 	int			type;
-// 	t_material	m;
-// }				t_cone;
-
 typedef struct s_plane
 {
 	t_vec		normal;
@@ -145,7 +151,6 @@ typedef enum e_object_type
 	OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER,
-	OBJ_CONE
 }	t_object_type;
 
 typedef struct s_object
@@ -166,7 +171,6 @@ typedef struct s_object_list
 	t_object	*head;
 }	t_object_list;
 
-
 typedef struct s_ray
 {
 	t_vec	origin;
@@ -185,7 +189,6 @@ typedef struct s_hit
 		t_sphere	*sphere;
 		t_cylinder	*cyl;
 		t_plane		*plane;
-		// t_cone	*cone;
 	};
 	t_variation		variation;
 	t_ray			*ray;
@@ -198,8 +201,7 @@ typedef struct s_quadratic
 	double	b;
 	double	c;
 	double	discriminant;
-	double	root1;
-	double	root2;
+	double	root[2];
 }	t_quadratic;
 
 typedef struct s_lighting

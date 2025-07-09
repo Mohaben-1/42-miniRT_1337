@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   project_onto_plane.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 15:56:10 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/06 12:29:34 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/08 17:25:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	main(int ac, char **av)
+t_vec	project_onto_plane(t_vec v, t_vec n)
 {
-	t_rt	rt;
-	int		fd;
+	t_vec		n_scaled;
+	double		dot_product;
 
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	dot_product = vec_dot(v, n);
+	n_scaled = vec_scale(n, dot_product);
+	return (vec_sub(v, n_scaled));
 }

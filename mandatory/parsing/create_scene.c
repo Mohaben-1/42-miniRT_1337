@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_scene.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:28:42 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/08 20:38:26 by mohaben-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
 void	parse_line(t_rt *rt, char *line, int *id)
@@ -16,11 +28,11 @@ void	parse_line(t_rt *rt, char *line, int *id)
 		parse_plane(line, rt->scene, rt, id);
 }
 
-void  create_scene(t_rt *rt, int fd)
+void	create_scene(t_rt *rt, int fd)
 {
 	t_object_list	*scene;
-	char					*line;
-	int 					id;
+	char			*line;
+	int				id;
 
 	scene = ft_calloc(1, sizeof(t_object_list));
 	if (!scene)

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 15:56:10 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/09 12:48:15 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/09 12:48:29 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
+#include "../includes/minirt.h"
 
-int	main(int ac, char **av)
+char	*ft_strchr(char *s, int c)
 {
-	t_rt	rt;
-	int		fd;
-
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	if (s == NULL)
+		return (NULL);
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

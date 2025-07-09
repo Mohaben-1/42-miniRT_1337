@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:48:12 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:55:11 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:57:41 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	object_list_add(t_object_list *list, void *obj, int id, int type)
 		new->plane = (t_plane *)obj;
 	else if (type == OBJ_CYLINDER)
 		new->cylinder = (t_cylinder *)obj;
-	// else if (type == OBJ_CONE)
-	//     new->cone = (t_cone *)obj;
 	list->head = new;
 }
 
@@ -45,8 +43,6 @@ void	free_object_list(t_object_list *list)
 			free(tmp->plane);
 		else if (tmp->type == OBJ_CYLINDER)
 			free(tmp->cylinder);
-		// else if (tmp->type == OBJ_CONE)
-		//     free(tmp->cone);
 		free(tmp);
 	}
 	free(list);

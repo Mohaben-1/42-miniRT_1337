@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:40:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/02 20:25:16 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:22:02 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	check_camera_vals(char **splited)
 {
 	if (!check_position(splited[1]))
 	{
-		ft_putstr_fd("Error\nInvalid camera position: expected format 'x,y,z' with numeric values.\n", 2);
+		ft_putstr_fd(ERR_POSITION_CAM1 ERR_POSITION_CAM2, 2);
 		return (0);
 	}
 	if (!check_normal(splited[2]))
 	{
-		ft_putstr_fd("Error\nInvalid camera direction: must be a normalized vector 'x,y,z' where each component is between -1 and 1.\n", 2);
+		ft_putstr_fd(ERR_DIR_CAM1 ERR_D_C2, 2);
 		return (0);
 	}
 	if (!check_fov(splited[3]))
 	{
-		ft_putstr_fd("Error\nInvalid field of view: FOV must be a number between 0 and 180 degrees.\n", 2);
+		ft_putstr_fd(ERR_FOV_CAM1 ERR_FOV_CAM2, 2);
 		return (0);
 	}
 	return (1);
@@ -59,7 +59,7 @@ int	check_camera(char *line)
 		return (free_dbl_ptr((void **)splited), 0);
 	if (ft_count_args(splited) != 4)
 	{
-		ft_putstr_fd("Error\nInvalid camera definition: expected exactly 3 parameters after 'C'.\n", 2);
+		ft_putstr_fd(ERR_ARGS_CAM1 ERR_ARGS_CAM2, 2);
 		return (free_dbl_ptr((void **)splited), 0);
 	}
 	if (!check_camera_vals(splited))

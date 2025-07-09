@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 20:38:18 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:35:18 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ int				check_double(char *line);
 int				check_commas(char *line);
 int				check_ratio(char *line);
 int				check_color(char *line);
-int				check_texture(char *texture);
 int				check_ambient(char *line);
 int				check_camera(char *line);
 int				check_light(char *line);
 int				check_sphere(char *line);
 int				check_plane(char *line);
 int				check_cylinder(char *line);
+int				check_texture(char *texture);
 int				check_cone(char *line);
 void			object_list_add(t_object_list *list, void *obj,
 					int id, int type);

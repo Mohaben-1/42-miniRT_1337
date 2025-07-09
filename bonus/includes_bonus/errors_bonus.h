@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:47:31 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:53:50 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:21:57 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@
 # define ERR_COLOR_L2 "expected RGB format 'r,g,b' between 0 and 255.\n"
 
 // Sphere
-# define ERR_ARGS_S1 "Error\nInvalid sphere: "
-# define ERR_ARGS_S2 "expected format 'sp x,y,z diameter r,g,b'\n"
+# define ERR_ARGS_S1 "Error\nInvalid sphere: expected format 'sp"
+# define ERR_ARGS_S2 " x,y,z diameter r,g,b [bump_texture_path or checker]'\n"
 # define ERR_POS_S1 "Error\nInvalid sphere position: "
 # define ERR_POS_S2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_DIAMETER_S1 "Error\nInvalid sphere diameter: "
@@ -60,7 +60,8 @@
 
 // Cylinder
 # define ERR_ARGS_CY1 "Error\nInvalid cylinder: expected format "
-# define ERR_ARGS_CY2 "'cy center_x,y,z axis_x,y,z diameter height r,g,b'\n"
+# define ERR_ARGS_CY2 "'cy center_x,y,z axis_x,y,z diameter "
+# define ERR_ARGS_CY3 "height r,g,b [bump_texture_path or checker]'\n"
 # define ERR_POS_CY1 "Error\nInvalid cylinder position: "
 # define ERR_POS_CY2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_NORMALE_CY1 "Error\nInvalid cylinder axis vector: "
@@ -74,7 +75,8 @@
 
 // Plane
 # define ERR_ARGS_P1 "Error\nInvalid plane: expected "
-# define ERR_ARGS_P2 "format 'pl x,y,z normal_x,normal_y,normal_z r,g,b'\n"
+# define ERR_ARGS_P2 "format 'pl x,y,z normal_x,normal_y,normal_z '\n"
+# define ERR_ARGS_P3 "r,g,b [bump_texture_path or checker]'\n"
 # define ERR_POS_P1 "Error\nInvalid plane position: "
 # define ERR_POS_P2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_NORMAL_P1 "Error\nInvalid plane normal vector: "

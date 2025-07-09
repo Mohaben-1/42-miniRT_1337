@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cylinder_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:58:37 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:55:24 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:21:06 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_cylinder(char *line)
 	arg_count = ft_count_args(splited);
 	if (arg_count != 6 && arg_count != 7)
 	{
-		ft_putstr_fd("Error\nInvalid cylinder: expected format 'cy center_x,y,z axis_x,y,z diameter height r,g,b [bump_texture_path or checker]'\n", 2);
+		ft_putstr_fd(ERR_ARGS_CY1 ERR_ARGS_CY2 ERR_ARGS_CY3, 2);
 		free_dbl_ptr((void **)splited);
 		return (0);
 	}

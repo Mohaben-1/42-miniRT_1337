@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_sphere_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:42:43 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:55:41 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:27:15 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int	check_sphere_vals(char **splited, int arg_count)
 {
 	if (!check_position(splited[1]))
 	{
-		ft_putstr_fd("Error\nInvalid sphere position: expected 'x,y,z' with numeric values.\n", 2);
+		ft_putstr_fd(ERR_POS_S1 ERR_POS_S2, 2);
 		return (0);
 	}
 	if (!check_float(splited[2]))
 	{
-		ft_putstr_fd("Error\nInvalid sphere diameter: expected a positive floating-point number.\n", 2);
+		ft_putstr_fd(ERR_DIAMETER_S1 ERR_DIAMETER_S2, 2);
 		return (0);
 	}
 	if (!check_color(splited[3]))
 	{
-		ft_putstr_fd("Error\nInvalid sphere color: expected RGB format 'r,g,b' between 0 and 255.\n", 2);
+		ft_putstr_fd(ERR_COLOR_S1 ERR_COLOR_S2, 2);
 		return (0);
 	}
 	if (arg_count == 5)
@@ -49,7 +49,7 @@ int	check_sphere(char *line)
 	arg_count = ft_count_args(splited);
 	if (arg_count != 4 && arg_count != 5)
 	{
-		ft_putstr_fd("Error\nInvalid sphere: expected format 'sp x,y,z diameter r,g,b [bump_texture_path or checker]'\n", 2);
+		ft_putstr_fd(ERR_ARGS_S1 ERR_ARGS_S2, 2);
 		return (free_dbl_ptr((void **)splited), 0);
 	}
 	if (!check_sphere_vals(splited, arg_count))

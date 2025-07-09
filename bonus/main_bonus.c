@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/03 17:52:44 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:46:24 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	init_rt(&rt, fd);
 	close(fd);
-	// render(&rt);
+	render(&rt);
 	ft_mlx_events(&rt);
 	return (0);
 }

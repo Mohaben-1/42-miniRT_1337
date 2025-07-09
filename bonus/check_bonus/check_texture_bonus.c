@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:12:13 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 20:27:11 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:27:59 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	check_texture(char *texture)
 		texture += 3;
 	else
 	{
-		ft_putstr_fd("Error\nInvalid texture identifier: Only 'tx:' is accepted.\n", 2);
+		ft_putstr_fd("Error\nInvalid texture identifier: ", 2);
+		ft_putstr_fd("Only 'tx:' is accepted.\n", 2);
 		return (0);
 	}
 	len = ft_strlen(texture);

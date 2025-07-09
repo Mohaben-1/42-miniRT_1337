@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_sphere_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 15:44:37 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/09 22:57:42 by medd             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes_bonus/minirt_bonus.h"
+
+t_vec	ray_at(t_ray ray, double t)
+{
+	return (vec_add(ray.origin, vec_scale(ray.direction, t)));
+}
+
+static int	validate_quadratic_root(t_variation t, t_vec delta,
+			double sqrt_discr, double *root)
+{
+	if (t.min > *root || *root > t.max)
+	{
+		*root = (-delta.y + sqrt_discr) / delta.x;
+		if (t.min > *root || *root > t.max)
+			return (0);
+	}
+	return (1);
+}
+
+static t_vec	compute_normal_at_hit(t_hit_data *rec, t_sphere sphere)
+{
+	t_vec	new;
+
+	new = vec_div(vec_sub(rec->point, sphere.center), sphere.radius);
+	return (new);
+}
+
+int	hit_sphere(t_sphere sphere, t_ray *ray, t_variation t, t_hit_data *rec)
+{
+	t_vec		distance;
+	t_vec		delta;
+	t_vec		out_normal;
+	double		discr;
+	double		root;
+
+	distance = vec_sub(ray->origin, sphere.center);
+	delta.x = vec_len_sqd(ray->direction);
+	delta.y = vec_dot(distance, ray->direction);
+	delta.z = vec_len_sqd(distance) - sphere.radius * sphere.radius;
+	discr = delta.y * delta.y - (delta.x * delta.z);
+	if (discr < 0)
+		return (0);
+	root = (-delta.y - sqrt(discr)) / delta.x;
+	if (!validate_quadratic_root(t, delta, sqrt(discr), &root))
+		return (0);
+	rec->t = root;
+	rec->point = ray_at(*ray, rec->t);
+	out_normal = compute_normal_at_hit(rec, sphere);
+	determine_surface_normal(rec, ray, &out_normal);
+	return (1);
+}

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_shadow.c                                       :+:      :+:    :+:   */
+/*   ray_shadow_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:45:39 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 23:17:41 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/09 23:18:28 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../includes_bonus/minirt_bonus.h"
 
 static int	init_shadow_variables(double *closest, t_variation t)
 {
@@ -31,6 +31,8 @@ static bool	object_hit(t_object *obj, t_ray *ray, t_variation t,
 		return (hit_sphere(*(obj->sphere), ray, t, hit_data));
 	if (obj->type == OBJ_PLANE)
 		return (hit_plane(*(obj->plane), ray, t, hit_data));
+	if (obj->type == OBJ_CONE)
+		return (hit_cone(*(obj->cone), ray, t, hit_data));
 	if (obj->type == OBJ_CYLINDER)
 		return (hit_cylinder(obj->cylinder, ray, t, hit_data));
 	return (false);

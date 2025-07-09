@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   determine_surface_normal_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/13 12:01:21 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 22:53:17 by medd             ###   ########.fr       */
+/*   Created: 2025/07/06 12:35:04 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/10 00:14:29 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes_bonus/minirt_bonus.h"
+#include "../includes_bonus/minirt_bonus.h"
 
-void	ff()
+void	determine_surface_normal(t_hit_data *hit_data, t_ray *ray, t_vec *out_normal)
 {
-	system("leaks -q miniRT");
-}
-
-int	main(int ac, char **av)
-{
-	t_rt	rt;
-	int		fd;
-
-	if (!check_args(ac, av[1]) || !check_file(av[1]))
-		return (1);
-	ft_bzero(&rt, 1);
-	ft_mlx_init(&rt);
-	fd = open(av[1], O_RDONLY);
-	init_rt(&rt, fd);
-	close(fd);
-	render(&rt);
-	ft_mlx_events(&rt);
-	return (0);
+	hit_data->is_front_face = vec_dot(ray->direction, *out_normal) < 0;
+	if (hit_data->is_front_face)
+		hit_data->normal = *out_normal;
+	else
+		hit_data->normal = vec_negative(out_normal);
 }

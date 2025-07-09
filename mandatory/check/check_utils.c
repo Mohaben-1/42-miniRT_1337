@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 16:56:41 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/08 20:20:52 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:52:38 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	check_color(char *line)
 	char	**splited;
 	int		i;
 
+	trim_trailing_whitespace_line(line);
 	splited = ft_split(line, ',');
 	if (!splited)
 		return (0);

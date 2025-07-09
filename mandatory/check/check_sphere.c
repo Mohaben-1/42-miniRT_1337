@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:42:43 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/08 19:48:51 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:52:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_sphere(char *line)
 {
 	char	**splited;
 
+	trim_trailing_whitespace_line(line);
 	splited = ft_split(line, ' ');
 	if (!splited)
 		return (0);

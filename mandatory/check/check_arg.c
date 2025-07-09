@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/08 18:51:48 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:57:00 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,26 @@ int	check_args(int ac, char *file)
 		ft_putstr_fd("Error\nInvalid file extension: ", 2);
 		ft_putstr_fd("Expected a file with the '.rt' extension.\n", 2);
 		return (0);
+	}
+	return (1);
+}
+
+int	check_valid_line(char *line, int line_num)
+{
+	int	i;
+
+	i = 0;
+
+	while (line[i])
+	{
+		if (line[i] == '\r' || line[i] == '\t')
+		{
+			ft_putstr_fd("Error\nInvalid character found at line: ", 2);
+			ft_putnbr_fd(line_num, 2);
+			ft_putstr_fd(" please use spaces instead\n", 2);
+			return (0);
+		}
+		i++;
 	}
 	return (1);
 }
@@ -58,7 +78,9 @@ int	check_required_elements(int fd)
 
 int	check_line(char *line, int line_num)
 {
-	if (!ft_strncmp(line, "C ", 2))
+	if (!check_valid_line(line, line_num))
+		return (0);
+	else if (!ft_strncmp(line, "C ", 2))
 		return (check_camera(line));
 	else if (!ft_strncmp(line, "A ", 2))
 		return (check_ambient(line));

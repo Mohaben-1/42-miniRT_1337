@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:33:14 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 13:31:49 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:51:50 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_light(char *line)
 {
 	char	**splited;
 
+	trim_trailing_whitespace_line(line);
 	splited = ft_split(line, ' ');
 	if (!splited)
 		return (0);

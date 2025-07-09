@@ -17,7 +17,7 @@ SRCS		= mandatory/main.c \
 			mandatory/rendring/render_scene.c mandatory/rendring/rendering.c mandatory/rendring/determine_surface_normal.c \
 			mandatory/rendring/project_onto_plane.c mandatory/rendring/cylinder_utils.c mandatory/rendring/ray_shadow.c \
 			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c mandatory/mlx_utils/mlx_pixel_draw.c mandatory/mlx_utils/mlx_image_to_window.c  \
-			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c \
+			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c mandatory/utils/ft_trim_line.c \
 			mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list.c mandatory/utils/ft_strjoin.c mandatory/utils/ft_strchr.c \
 			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/ft_isalnum.c
 
@@ -28,7 +28,7 @@ SRCS_BNS =  bonus/main_bonus.c \
 			bonus/math_bonus/vec_ops_bonus.c \
 			bonus/mlx_utils_bonus/ft_mlx_events_bonus.c bonus/mlx_utils_bonus/mlx_init_bonus.c \
 			bonus/utils_bonus/free_bonus.c bonus/utils_bonus/ft_atoi_bonus.c bonus/utils_bonus/ft_count_args_bonus.c bonus/utils_bonus/ft_isspace_bonus.c bonus/utils_bonus/ft_putnbr_fd_bonus.c bonus/utils_bonus/ft_split_bonus.c  bonus/utils_bonus/ft_strdup_bonus.c bonus/utils_bonus/ft_strncmp_bonus.c bonus/utils_bonus/get_next_line_bonus.c bonus/utils_bonus/object_list_bonus.c \
-			bonus/utils_bonus/ft_atof_bonus.c bonus/utils_bonus/ft_calloc_bonus.c bonus/utils_bonus/ft_empty_str_bonus.c bonus/utils_bonus/ft_memset_bonus.c bonus/utils_bonus/ft_putstr_fd_bonus.c bonus/utils_bonus/ft_strcmp_bonus.c bonus/utils_bonus/ft_strlen_bonus.c bonus/utils_bonus/ft_substr_bonus.c bonus/utils_bonus/ft_isalnum_bonus.c bonus/utils_bonus/ft_trim_line.c
+			bonus/utils_bonus/ft_atof_bonus.c bonus/utils_bonus/ft_calloc_bonus.c bonus/utils_bonus/ft_empty_str_bonus.c bonus/utils_bonus/ft_memset_bonus.c bonus/utils_bonus/ft_putstr_fd_bonus.c bonus/utils_bonus/ft_strcmp_bonus.c bonus/utils_bonus/ft_strlen_bonus.c bonus/utils_bonus/ft_substr_bonus.c bonus/utils_bonus/ft_isalnum_bonus.c bonus/utils_bonus/ft_trim_line_bonus.c
 
 # Object files
 OBJS		= $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 18:26:34 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:49:48 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,7 @@ int check_line(char *line, int line_num)
 		ft_putnbr_fd(line_num, 2);
 		ft_putstr_fd(": '", 2);
 		ft_putstr_fd(line, 2);
-		ft_putstr_fd("'\n", 2);
-		return (0);
+		return (ft_putstr_fd("'\n", 2), 0);
 	}
 	return (1);
 }

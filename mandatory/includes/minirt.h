@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 16:48:51 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:51:03 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char			**ft_split(char const *s, char c);
 char			*ft_strchr(char *s, int c);
 char			*ft_strjoin(char *s1, char *s2);
 char			*get_next_line(int fd);
+void 			trim_trailing_whitespace_line(char *line);
 void			free_dbl_ptr(void **ptr);
 
 // Parsing

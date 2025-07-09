@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 18:49:48 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:41:44 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ int	check_args(int ac, char *file)
 
 	if (ac != 2)
 	{
-		ft_putstr_fd("Error\nIncorrect number of arguments - Usage: ./program scene.rt\n", 2);
+		ft_putstr_fd("Error\nIncorrect number of arguments.", 2);
+		ft_putstr_fd(" Usage: ./program scene.rt\n", 2);
 		return (0);
 	}
 	len = ft_strlen(file);
 	if (len < 4 || ft_strncmp(file + len - 3, ".rt", 3) != 0)
 	{
-		ft_putstr_fd("Error\nInvalid file extension: Expected a file with the '.rt' extension.\n", 2);
+		ft_putstr_fd("Error\nInvalid file extension: ", 2);
+		ft_putstr_fd("Expected a file with the '.rt' extension.\n", 2);
 		return (0);
 	}
 	return (1);
@@ -55,10 +57,7 @@ int	check_required_elements(int fd)
 	}
 	close(fd);
 	if (a_count != 1 || c_count != 1 || l_count < 1)
-	{
-		ft_putstr_fd("Error\nScene must contain exactly one Ambient (A), one Camera (C), and at least one Light (L).\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_REQUIRED1 ERR_REQUIRED2, 2), 0);
 	return (1);
 }
 
@@ -120,7 +119,7 @@ int	check_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (ft_putstr_fd("Error\nFailed to open file: file not found or permission denied\n", 2), 0);
+		return (ft_putstr_fd(ERR_FD1 ERR_FD2, 2), 0);
 	if (!check_required_elements(fd))
 		return (0);
 	fd = open(file, O_RDONLY);

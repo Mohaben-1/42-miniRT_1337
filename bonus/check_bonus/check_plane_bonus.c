@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 19:50:52 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 20:21:46 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:55:34 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int	check_plane_vals(char **splited, int arg_count)
 	if (arg_count == 5)
 	{
 		if (ft_strcmp(splited[4], "checker") && !check_texture(splited[4]))
-		{
-			ft_putstr_fd("Error\nExpected either a '.xpm' bump map texture or 'checker' keyword.\n", 2);
-			return (0);
-		}
+			return (ft_putstr_fd(ERR_BNS1 ERR_BNS2, 2), 0);
 	}
 	return (1);
 }

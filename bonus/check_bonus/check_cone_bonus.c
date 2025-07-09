@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:24:09 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 20:20:17 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:54:28 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,19 @@
 int	check_cone_vals(char **splited, int arg_count)
 {
 	if (!check_position(splited[1]))
-	{
-		ft_putstr_fd("Error\nInvalid cone position: expected format 'x,y,z'.\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_POS_CN, 2), 0);
 	if (!check_normal(splited[2]))
-	{
-		ft_putstr_fd("Error\nInvalid cone axis: must be a normalized vector 'x,y,z'.\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_NRM_CN1 ERR_NRM_CN2, 2), 0);
 	if (!check_float(splited[3]))
-	{
-		ft_putstr_fd("Error\nInvalid cone height: expected a positive float.\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_H_CN, 2), 0);
 	if (!check_float(splited[4]))
-	{
-		ft_putstr_fd("Error\nInvalid cone angle: expected a positive float (degrees).\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_ANGL_CN1 ERR_ANGL_CN2, 2), 0);
 	if (!check_color(splited[5]))
-	{
-		ft_putstr_fd("Error\nInvalid cone color: expected format 'r,g,b'.\n", 2);
-		return (0);
-	}
+		return (ft_putstr_fd(ERR_CLR_CN, 2), 0);
 	if (arg_count == 7)
 	{
 		if (ft_strcmp(splited[6], "checker") && !check_texture(splited[6]))
-		{
-			ft_putstr_fd("Error\nExpected either a '.xpm' bump map texture or 'checker' keyword.\n", 2);
-			return (0);
-		}
+			return (ft_putstr_fd(ERR_BNS1 ERR_BNS2, 2), 0);
 	}
 	return (1);
 }
@@ -62,7 +44,7 @@ int	check_cone(char *line)
 	arg_count = ft_count_args(splited);
 	if (arg_count != 6 && arg_count != 7)
 	{
-		ft_putstr_fd("Error\nInvalid cone format: expected 'co pos_x,y,z axis_x,y,z height angle r,g,b [bump_texture_path or checker]'\n", 2);
+		ft_putstr_fd(ERR_ARGS_CN1 ERR_ARGS_CN2 ERR_ARGS_CN3, 2);
 		return (free_dbl_ptr((void **)splited), 0);
 	}
 	if (!check_cone_vals(splited, arg_count))

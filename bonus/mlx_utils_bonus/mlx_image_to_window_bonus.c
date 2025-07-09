@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_trim_line.c                                     :+:      :+:    :+:   */
+/*   mlx_image_to_window_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 18:09:41 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:52:08 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/06 14:45:11 by ahouass           #+#    #+#             */
+/*   Updated: 2025/07/09 19:01:55 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../includes_bonus/minirt_bonus.h"
 
-void	trim_trailing_whitespace_line(char *line)
+void	mlx_image_to_window(t_rt *rt, int x, int y)
 {
-	int	i;
-
-	i = ft_strlen(line) - 1;
-	while (i >= 0 && (line[i] == ' ' || line[i] == '\n'))
-	{
-		line[i] = '\0';
-		i--;
-	}
+	mlx_put_image_to_window(
+		rt->mlx.ptr,
+		rt->mlx.window,
+		rt->img.img,
+		x, y);
 }

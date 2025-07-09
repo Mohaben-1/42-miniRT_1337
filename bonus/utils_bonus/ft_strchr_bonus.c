@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_trim_line.c                                     :+:      :+:    :+:   */
+/*   ft_strchr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 18:09:41 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:52:08 by mohaben-         ###   ########.fr       */
+/*   Created: 2025/07/09 12:48:15 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/09 20:31:44 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
+#include "../includes_bonus/minirt_bonus.h"
 
-void	trim_trailing_whitespace_line(char *line)
+char	*ft_strchr(char *s, int c)
 {
-	int	i;
-
-	i = ft_strlen(line) - 1;
-	while (i >= 0 && (line[i] == ' ' || line[i] == '\n'))
+	if (s == NULL)
+		return (NULL);
+	while (*s)
 	{
-		line[i] = '\0';
-		i--;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

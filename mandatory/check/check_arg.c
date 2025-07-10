@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:41:28 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:34:12 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	check_valid_line(char *line, int line_num)
 	int	i;
 
 	i = 0;
-
 	while (line[i])
 	{
 		if (line[i] == '\r' || line[i] == '\t')

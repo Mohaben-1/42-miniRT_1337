@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:44:37 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 22:57:42 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 10:33:02 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static int	validate_quadratic_root(t_variation t, t_vec delta,
 	return (1);
 }
 
-static t_vec	compute_normal_at_hit(t_hit_data *rec, t_sphere sphere)
+static t_vec	compute_normal_at_hit(t_hit_data *hit_data, t_sphere sphere)
 {
 	t_vec	new;
 
-	new = vec_div(vec_sub(rec->point, sphere.center), sphere.radius);
+	new = vec_div(vec_sub(hit_data->point, sphere.center), sphere.radius);
 	return (new);
 }
 
-int	hit_sphere(t_sphere sphere, t_ray *ray, t_variation t, t_hit_data *rec)
+int	hit_sphere(t_sphere sphere, t_ray *ray, t_variation t, t_hit_data *hit_data)
 {
 	t_vec		distance;
 	t_vec		delta;
@@ -55,9 +55,9 @@ int	hit_sphere(t_sphere sphere, t_ray *ray, t_variation t, t_hit_data *rec)
 	root = (-delta.y - sqrt(discr)) / delta.x;
 	if (!validate_quadratic_root(t, delta, sqrt(discr), &root))
 		return (0);
-	rec->t = root;
-	rec->point = ray_at(*ray, rec->t);
-	out_normal = compute_normal_at_hit(rec, sphere);
-	determine_surface_normal(rec, ray, &out_normal);
+	hit_data->t = root;
+	hit_data->point = ray_at(*ray, hit_data->t);
+	out_normal = compute_normal_at_hit(hit_data, sphere);
+	determine_surface_normal(hit_data, ray, &out_normal);
 	return (1);
 }

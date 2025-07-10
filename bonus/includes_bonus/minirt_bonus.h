@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 22:56:13 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 10:33:02 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ t_color			compute_ray_color(t_ray ray, t_object_list *scene,
 t_hit			init_hit(t_cylinder *cyl, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 t_quadratic		init_quadra(t_vec ray_dir, t_vec v, double radius);
-void			determine_surface_normal(t_hit_data *rec, t_ray *ray,
+void			determine_surface_normal(t_hit_data *hit_data, t_ray *ray,
 					t_vec *out_normal);
 t_color			compute_lighting(t_material m, t_light light, t_hit *hit,
 					int in_shadow);
@@ -130,7 +130,7 @@ int				hit_caps(t_cylinder c, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 unsigned long	color_rgb(t_color *color);
 int				find_closest_hit(t_object_list *list, t_ray *ray,
-					t_variation t, t_hit_data *rec);
+					t_variation t, t_hit_data *hit_data);
 void			update_hit_data(t_hit_data *hit_data, t_vec hit_point,
 					t_vec cap_base, t_vec axis);
 int				is_in_shadow(t_object_list *list, t_variation t,
@@ -138,7 +138,7 @@ int				is_in_shadow(t_object_list *list, t_variation t,
 int				check_cap_intersection(t_hit *hit, double t_val,
 					t_vec point, int is_bottom);
 int				hit_sphere(t_sphere sphere, t_ray *ray, t_variation t,
-					t_hit_data *rec);
+					t_hit_data *hit_data);
 int				hit_plane(t_plane plane, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,

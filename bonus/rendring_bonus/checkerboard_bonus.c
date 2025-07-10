@@ -6,56 +6,56 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 20:18:42 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:30:55 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-t_color	get_checkerboard_color(t_material material, t_vec point)
+t_color	get_checkerboard_pattern(t_vec point)
 {
 	double	u;
 	double	v;
-	int 	checker_u;
+	int		checker_u;
 	int		checker_v;
-	
+
 	u = point.x * 4.0;
 	v = point.z * 4.0;
 	checker_u = (int)floor(u);
 	checker_v = (int)floor(v);
 	if ((checker_u + checker_v) % 2 == 0)
-		return (material.color);
+		return (vec_create(1.0, 1.0, 1.0));
 	else
-		return (material.checker_color2);
+		return (vec_create(0.0, 0.0, 0.0));
 }
 
-t_color	get_sphere_checkerboard_color(t_material material, t_vec point, t_vec center)
+t_color	get_sphere_checkerboard(t_vec point, t_vec center)
 {
-	t_vec relative_point;
 	double	theta;
 	double	phi;
 	double	u;
 	double	v;
 	int		checker_u;
 	int		checker_v;
+	t_vec	relative_point;
 
 	relative_point = vec_sub(point, center);
 	relative_point = vec_normalize(relative_point);
 	theta = atan2(relative_point.z, relative_point.x);
 	phi = acos(relative_point.y);
-	u = (theta + M_PI) / (2.0 * M_PI);
-	v = phi / M_PI;
+	u = (theta + PI) / (2.0 * PI);
+	v = phi / PI;
 	u *= 4.0;
 	v *= 4.0;
 	checker_u = (int)floor(u);
 	checker_v = (int)floor(v);
 	if ((checker_u + checker_v) % 2 == 0)
-		return (material.color);
+		return (vec_create(1.0, 1.0, 1.0));
 	else
-		return (material.checker_color2);
+		return (vec_create(0.0, 0.0, 0.0));
 }
 
-t_color	get_plane_checkerboard_color(t_material material, t_vec point, t_vec plane_pos, t_vec plane_normal)
+t_color	get_plane_checkerboard(t_vec point, t_vec plane_pos, t_vec plane_normal)
 {
 	t_vec	u_axis;
 	t_vec	v_axis;
@@ -64,7 +64,7 @@ t_color	get_plane_checkerboard_color(t_material material, t_vec point, t_vec pla
 	double	v;
 	int		checker_u;
 	int		checker_v;
-	
+
 	if (fabs(plane_normal.y) < 0.9)
 		u_axis = vec_normalize(vec_cross(plane_normal, vec_create(0, 1, 0)));
 	else
@@ -76,7 +76,26 @@ t_color	get_plane_checkerboard_color(t_material material, t_vec point, t_vec pla
 	checker_u = (int)floor(u);
 	checker_v = (int)floor(v);
 	if ((checker_u + checker_v) % 2 == 0)
-		return material.color;
+		return (vec_create(1.0, 1.0, 1.0));
 	else
-		return material.checker_color2;
+		return (vec_create(0.0, 0.0, 0.0));
+}
+
+t_color	get_material_color(t_material material, t_hit *hit)
+{
+	t_object	*obj;
+
+	if (material.texture_type == TEX_CHECKER)
+	{
+		if (hit->hit_data->object_id < 0)
+			return (material.color);
+		obj = get_object_by_id(hit->hit_data->object_id);
+		if (obj->type == OBJ_SPHERE)
+			return (get_sphere_checkerboard(hit->hit_data->point, obj->sphere->center));
+		else if (obj->type == OBJ_PLANE)
+			return (get_plane_checkerboard(hit->hit_data->point, obj->plane->position, obj->plane->normal));
+		else
+			return get_checkerboard_pattern(hit->hit_data->point);
+	}
+	return (material.color);
 }

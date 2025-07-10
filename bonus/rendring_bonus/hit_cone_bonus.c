@@ -1,24 +1,34 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_cone_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/10 12:47:26 by mohaben-          #+#    #+#             */
+/*   Updated: 2025/07/10 13:49:07 by mohaben-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
 int within_cone_bounds(double height, double root, t_variation t, double cone_height)
 {
-  return (height >= 0 && height <= cone_height
+	return (height >= 0 && height <= cone_height
 		&& root >= t.min && root <= t.max);
 }
 
 t_quadratic find_quadra_root(t_quadratic quadra)
 {
-  quadra.root[0] = (-quadra.b - sqrt(quadra.discriminant)) / (2 * quadra.a);
+	quadra.root[0] = (-quadra.b - sqrt(quadra.discriminant)) / (2 * quadra.a);
 	quadra.root[1] = (-quadra.b + sqrt(quadra.discriminant)) / (2 * quadra.a);
 	return (quadra);
 }
 
 int any_root_valid(double height[], double root[], t_variation t, double h)
 {
-  return (within_cone_bounds(height[0], root[0], t, h)
-    || within_cone_bounds(height[1], root[1], t, h));
+	return (within_cone_bounds(height[0], root[0], t, h)
+	|| within_cone_bounds(height[1], root[1], t, h));
 }
 
 void	set_data_hit_cone(t_hit_data *hit_data, double root, t_vec point)
@@ -70,7 +80,7 @@ int	hit_cone(t_cone cone, t_ray *ray, t_variation t, t_hit_data *hit_data)
 	{
 		if (within_cone_bounds(h[0], quadra.root[0], t, cone.height) && (!within_cone_bounds(h[1],
 					quadra.root[1], t, cone.height) || quadra.root[0] < quadra.root[1]))
-			set_recor(hit_data, quadra.root[0], point[0]);
+			set_data_hit_cone(hit_data, quadra.root[0], point[0]);
 		else
 			set_data_hit_cone(hit_data, quadra.root[1], point[1]);
 		update_cone_hit_data(cone, ray, hit_data);

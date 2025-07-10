@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lighting.c                                         :+:      :+:    :+:   */
+/*   lighting_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:51:43 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 22:55:08 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 16:29:58 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,3 +77,46 @@ t_color	compute_lighting(t_material m, t_light light, t_hit *hit, int in_shadow)
 	normalize_result(colors);
 	return (get_final_color(colors));
 }
+
+
+// t_color compute_lighting_single(t_material m, t_light light, t_hit *hit, int in_shadow)
+// {
+//     t_color     light_color;
+//     t_color     colors[3]; // DIFFUSE, SPECULAR, RESULT (no AMBIENT here)
+//     t_vec       reflect_vec;
+//     t_vec       light_vec;
+//     double      light_dot_normal;
+
+//     light_color = vec_scale(light.color, light.intensity);
+//     light_vec = normalize(vec_sub(light.position, hit->hit_data->point));
+    
+//     // Only compute diffuse and specular for this light
+//     light_dot_normal = fmax(0, vec_dot(light_vec, hit->hit_data->normal));
+//     colors[0] = vec_scale(vec_product(m.color, light_color), 
+//                                 m.diffuse * light_dot_normal);
+    
+//     reflect_vec = vec_reflect(vec_negative(&light_vec), hit->hit_data->normal);
+//     colors[1] = vec_scale(light_color, m.specular
+//             * pow(fmax(0, vec_dot(reflect_vec, hit->ray->direction)), m.shininess));
+    
+//     if (!(light_dot_normal >= 0 && !in_shadow))
+//         zero_light(&colors[0], &colors[1]);
+    
+//     colors[2] = vec_add(colors[0], colors[1]);
+//     return (colors[2]);
+// }
+
+// // Keep the original function for ambient + single light
+// t_color compute_lighting(t_material m, t_light light, t_hit *hit, int in_shadow)
+// {
+//     t_color single_light = compute_lighting_single(m, light, hit, in_shadow);
+//     t_color ambient = vec_scale(m.color, m.ambient);
+//     t_color result = vec_add(ambient, single_light);
+    
+//     // Normalize/clamp the result
+//     result.r = fmin(1.0, result.r);
+//     result.g = fmin(1.0, result.g);
+//     result.b = fmin(1.0, result.b);
+    
+//     return (result);
+// }

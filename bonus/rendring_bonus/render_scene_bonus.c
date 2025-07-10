@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_scene.c                                     :+:      :+:    :+:   */
+/*   render_scene_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 20:06:18 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 22:55:30 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 16:21:51 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,8 @@ void	render_scene(t_rt *rt, t_object_list *scene)
 	t_vec	pixel;
 	t_ray	ray;
 	t_color	color;
-	t_light	light;
 
 	initialize_camera(&rt->camera, WIDTH / HEIGHT);
-	light = rt->light;
 	pixel.x = 0;
 	while (pixel.x < WIDTH)
 	{
@@ -86,7 +84,7 @@ void	render_scene(t_rt *rt, t_object_list *scene)
 			normal.x = (double)pixel.x / (WIDTH - 1);
 			normal.y = (double)pixel.y / (HEIGHT - 1);
 			ray = generate_ray(&rt->camera, normal);
-			color = compute_ray_color(ray, scene, light);
+			color = compute_ray_color(ray, scene, rt->lights);
 			mlx_pixel_draw(&rt->img, pixel.x, pixel.y, color_rgb(&color));
 			pixel.y++;
 		}

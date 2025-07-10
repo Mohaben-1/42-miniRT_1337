@@ -32,7 +32,11 @@ SRCS_BNS =  bonus/main_bonus.c \
 			bonus/mlx_utils_bonus/ft_mlx_events_bonus.c bonus/mlx_utils_bonus/mlx_init_bonus.c bonus/mlx_utils_bonus/mlx_pixel_draw_bonus.c bonus/mlx_utils_bonus/mlx_image_to_window_bonus.c \
 			bonus/utils_bonus/free_bonus.c bonus/utils_bonus/ft_atoi_bonus.c bonus/utils_bonus/ft_count_args_bonus.c bonus/utils_bonus/ft_isspace_bonus.c bonus/utils_bonus/ft_putnbr_fd_bonus.c bonus/utils_bonus/ft_split_bonus.c  bonus/utils_bonus/ft_strdup_bonus.c bonus/utils_bonus/ft_strncmp_bonus.c bonus/utils_bonus/get_next_line_bonus.c bonus/utils_bonus/object_list_bonus.c \
 			bonus/utils_bonus/ft_atof_bonus.c bonus/utils_bonus/ft_calloc_bonus.c bonus/utils_bonus/ft_empty_str_bonus.c bonus/utils_bonus/ft_memset_bonus.c bonus/utils_bonus/ft_putstr_fd_bonus.c bonus/utils_bonus/ft_strcmp_bonus.c bonus/utils_bonus/ft_strlen_bonus.c bonus/utils_bonus/ft_substr_bonus.c bonus/utils_bonus/ft_isalnum_bonus.c bonus/utils_bonus/ft_trim_line_bonus.c \
-			bonus/utils_bonus/ft_strjoin_bonus.c bonus/utils_bonus/ft_strchr_bonus.c
+			bonus/utils_bonus/ft_strjoin_bonus.c bonus/utils_bonus/ft_strchr_bonus.c \
+			bonus/rendring_bonus/color_rgb_bonus.c bonus/rendring_bonus/cylinder_utils2_bonus.c bonus/rendring_bonus/hit_cylinder_bonus.c bonus/rendring_bonus/hit_plane_bonus.c \
+			bonus/rendring_bonus/hit_sphere_bonus.c bonus/rendring_bonus/hit_detection_bonus.c bonus/rendring_bonus/lighting_bonus.c bonus/rendring_bonus/ray_color_bonus.c \
+			bonus/rendring_bonus/render_scene_bonus.c bonus/rendring_bonus/rendering_bonus.c bonus/rendring_bonus/determine_surface_normal_bonus.c bonus/rendring_bonus/hit_cone_bonus.c \
+			bonus/rendring_bonus/project_onto_plane_bonus.c bonus/rendring_bonus/cylinder_utils_bonus.c bonus/rendring_bonus/ray_shadow_bonus.c \
 
 
 # Object files

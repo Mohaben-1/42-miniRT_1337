@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:56:26 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/05 17:16:27 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:48:36 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	parse_line(t_rt *rt, char *line, int *id)
 		parse_cylinder(line, rt->scene, rt, id);
 	else if (ft_strncmp(line, "pl", 2) == 0)
 		parse_plane(line, rt->scene, rt, id);
+	else if (ft_strncmp(line, "co", 2) == 0)
+		parse_cone(line, rt->scene, rt, id);
 }
 
 void  create_scene(t_rt *rt, int fd)

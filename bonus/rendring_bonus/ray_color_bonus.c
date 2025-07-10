@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_color_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/09 23:24:38 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 16:20:01 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,14 @@ t_hit_data	init_hit_data(void)
 	return (new);
 }
 
-t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light light)
+t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 {
-	t_hit		hit;
-	t_hit_data	hit_data;
-	int			in_shadow;
+	t_light_list	*current;
+	t_hit			hit;
+	t_hit_data		hit_data;
+	int				in_shadow;
+	t_color			final_color;
+	t_color			light_contribution;
 
 	hit.variation.min = 0;
 	hit.variation.max = HUGE_VAL;
@@ -84,11 +87,23 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light light)
 	hit.hit_data = &hit_data;
 	if (find_closest_hit(scene, hit.ray, hit.variation, hit.hit_data))
 	{
-		in_shadow = is_shadowed(hit.hit_data->point, light, scene,
+		final_color = vec_create(0, 0, 0);
+		current = lights;
+		while (current)
+		{
+			in_shadow = is_shadowed(hit.hit_data->point, current->light, scene,
 				hit.hit_data->object_id);
-		vec_negative(&hit.ray->direction);
-		return (compute_lighting(get_material(scene, hit.hit_data->object_id),
-				light, &hit, in_shadow));
+			vec_negative(&hit.ray->direction);
+			light_contribution = compute_lighting(
+				get_material(scene, hit.hit_data->object_id),
+                current->light, &hit, in_shadow);
+			final_color = vec_add(final_color, light_contribution);
+			current = current->next;
+		}
+		final_color.r = fmin(1.0, final_color.r);
+		final_color.g = fmin(1.0, final_color.g);
+		final_color.b = fmin(1.0, final_color.b);
+		return (final_color);
 	}
 	return (vec_create(0, 0, 0));
 }

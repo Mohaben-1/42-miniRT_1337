@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/08 20:34:58 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:11:41 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,11 +174,7 @@ typedef struct s_object_list
 typedef struct s_ray
 {
 	t_vec	origin;
-	union
-	{
-		t_vec	direction;
-		t_vec	dir;
-	};
+	t_vec	direction;
 }	t_ray;
 
 typedef struct s_hit

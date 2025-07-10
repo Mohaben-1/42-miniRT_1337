@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:13:59 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:56:35 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:42:01 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	init_rt(t_rt *rt, int fd)
 			tmp->plane->material.ambient = rt->ambient.ratio;
 		else if (tmp->type == OBJ_CYLINDER)
 			tmp->cylinder->material.ambient = rt->ambient.ratio;
+		else if (tmp->type == OBJ_CONE)
+			tmp->cone->material.ambient = rt->ambient.ratio;
 		tmp = tmp->next;
 	}
 }

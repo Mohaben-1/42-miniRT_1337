@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/10 10:33:02 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:13:00 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void			parse_sphere(char *input, t_object_list *scene,
 void			parse_cylinder(char *input, t_object_list *lst,
 					t_rt *rt, int *id);
 void			parse_plane(char *input, t_object_list *scene,
+					t_rt *rt, int *id);
+void			parse_cone(char *input, t_object_list *scene,
 					t_rt *rt, int *id);
 int				check_args(int ac, char *file);
 int				check_file(char *file);
@@ -112,7 +114,7 @@ int				render(t_rt *rt);
 void			render_scene(t_rt *rt, t_object_list *scene);
 t_vec			ray_at(t_ray ray, double t);
 t_color			compute_ray_color(t_ray ray, t_object_list *scene,
-					t_light light);
+					t_light_list *lights);
 t_hit			init_hit(t_cylinder *cyl, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 t_quadratic		init_quadra(t_vec ray_dir, t_vec v, double radius);
@@ -120,8 +122,6 @@ void			determine_surface_normal(t_hit_data *hit_data, t_ray *ray,
 					t_vec *out_normal);
 t_color			compute_lighting(t_material m, t_light light, t_hit *hit,
 					int in_shadow);
-int				is_in_shadow(t_object_list *list,
-					t_variation t, t_hit *hit, int skip_id);
 int				set_closest_hit(double *closest, t_hit_data *tmp_hit,
 					t_hit_data *closest_hit, int obj_id);
 int				is_valid_intersection(double h, double rt, t_hit *hit);
@@ -142,6 +142,8 @@ int				hit_sphere(t_sphere sphere, t_ray *ray, t_variation t,
 int				hit_plane(t_plane plane, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
+					t_hit_data *hit_data);
+int				hit_cone(t_cone cone, t_ray *ray, t_variation t, 
 					t_hit_data *hit_data);
 
 #endif

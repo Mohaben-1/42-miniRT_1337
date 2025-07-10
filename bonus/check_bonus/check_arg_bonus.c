@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 20:41:44 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:00:46 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_required_elements(int fd)
 			a_count++;
 		else if (!ft_strncmp(line, "C ", 2))
 			c_count++;
-		else if (!ft_strncmp(line, "L ", 2))
+		else if (!ft_strncmp(line, "l ", 2))
 			l_count++;
 		free(line);
 	}
@@ -89,7 +89,7 @@ int check_line(char *line, int line_num)
 		return (check_camera(line));
 	else if (!ft_strncmp(line, "A ", 2))
 		return (check_ambient(line));
-	else if (!ft_strncmp(line, "L ", 2))
+	else if (!ft_strncmp(line, "l ", 2))
 		return (check_light(line));
 	else if (!ft_strncmp(line, "sp ", 3))
 		return (check_sphere(line));

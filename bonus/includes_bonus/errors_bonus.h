@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:47:31 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/09 22:21:57 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/10 19:37:47 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // General Errors
 
 # define ERR_REQUIRED1 "Error\nScene must contain exactly one Ambient (A)"
-# define ERR_REQUIRED2 ", one Camera (C), and at least one Light (L).\n"
+# define ERR_REQUIRED2 ", one Camera (C), and at least one Light (l).\n"
 # define ERR_FD1 "Error\nFailed to open the file: "
 # define ERR_FD2 "file not found or permission denied\n"
 
@@ -40,7 +40,7 @@
 
 // Light
 # define ERR_ARGS_L1 "Error\nInvalid light: "
-# define ERR_ARGS_L2 "expected format 'L x,y,z brightness R,G,B'\n"
+# define ERR_ARGS_L2 "expected format 'l x,y,z brightness R,G,B'\n"
 # define ERR_POS_L1 "Error\nInvalid light position: "
 # define ERR_POS_L2 "expected a 3D vector 'x,y,z' with numeric values.\n"
 # define ERR_BRIGHT_L1 "Error\nInvalid light brightness: "

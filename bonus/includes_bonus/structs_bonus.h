@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 16:10:50 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:17:56 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct s_material
 	double			specular;
 	double			shininess;
 	t_texture_type	texture_type;
+	t_color			checker_color2;
 }	t_material;
 
 typedef struct s_sphere

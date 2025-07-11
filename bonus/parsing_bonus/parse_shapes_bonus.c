@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 19:39:52 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:04:35 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id)
 	sphere->material.color = parse_color(splited[3]);
 	if (arg_count == 5)
 	{
-		if (!ft_strcmp(splited[4], "checker"))
+		if (!ft_strncmp(splited[4], "checker", 7))
 			sphere->material.texture_type = TEX_CHECKER;
 		else
 			sphere->material.texture_type = TEX_BUMP;
@@ -66,7 +66,7 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->material.color = parse_color(splited[5]);
 	if (arg_count == 7)
 	{
-		if (!ft_strcmp(splited[6], "checker"))
+		if (!ft_strncmp(splited[6], "checker", 7))
 			cy->material.texture_type = TEX_CHECKER;
 		else
 			cy->material.texture_type = TEX_BUMP;
@@ -94,10 +94,10 @@ void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *id)
 	pl->material.diffuse = 0.9;
 	pl->material.specular = 0.4;
 	pl->material.shininess = 200;
-	pl->material.color = parse_color(splited[3]);
+	pl->material.color = parse_color(splited[3]);	
 	if (arg_count == 5)
 	{
-		if (!ft_strcmp(splited[4], "checker"))
+		if (!ft_strncmp(splited[4], "checker", 7))
 			pl->material.texture_type = TEX_CHECKER;
 		else
 			pl->material.texture_type = TEX_BUMP;
@@ -130,7 +130,7 @@ void	parse_cone(char *input, t_object_list *scene, t_rt *rt, int *id)
 	cone->material.color = parse_color(splited[5]);
 	if (arg_count == 7)
 	{
-		if (!ft_strcmp(splited[6], "checker"))
+		if (!ft_strncmp(splited[6], "checker", 7))
 			cone->material.texture_type = TEX_CHECKER;
 		else
 			cone->material.texture_type = TEX_BUMP;

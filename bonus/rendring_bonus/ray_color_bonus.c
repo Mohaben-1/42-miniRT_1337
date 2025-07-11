@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/10 19:40:25 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/11 20:52:16 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,23 @@ t_hit_data	init_hit_data(void)
 	return (new);
 }
 
+// t_color	apply_checkerboard(t_hit *hit)
+// {
+// 	double	scale;
+// 	long	x;
+// 	long	y;
+// 	long	z;
+
+// 	scale = 0.1;
+// 	x = (long)(hit->hit_data->point.x / scale);
+// 	y = (long)(hit->hit_data->point.y / scale);
+// 	z = (long)(hit->hit_data->point.z / scale);
+// 	if ((x + y + z) % 2 == 0)
+// 		return (vec_create(1.0, 1.0, 1.0));
+// 	else
+// 		return (vec_create(0.0, 0.0, 0.0));
+// }
+
 t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 {
 	t_light_list	*current;
@@ -79,14 +96,19 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 	int				in_shadow;
 	t_color			final_color;
 	t_color			light_contribution;
+	t_material		material;
 
 	hit.variation.min = 0;
 	hit.variation.max = HUGE_VAL;
 	hit.ray = &ray;
 	hit_data = init_hit_data();
 	hit.hit_data = &hit_data;
+
 	if (find_closest_hit(scene, hit.ray, hit.variation, hit.hit_data))
 	{
+		material = get_material(scene, hit.hit_data->object_id);
+		if (material.texture_type == TEX_CHECKER)
+			material.color = apply_checkerboard(&hit);
 		final_color = vec_create(0, 0, 0);
 		current = lights;
 		while (current)
@@ -94,9 +116,7 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 			in_shadow = is_shadowed(hit.hit_data->point, current->light, scene,
 				hit.hit_data->object_id);
 			vec_negative(&hit.ray->direction);
-			light_contribution = compute_lighting(
-				get_material(scene, hit.hit_data->object_id),
-                current->light, &hit, in_shadow);
+			light_contribution = compute_lighting(material, current->light, &hit, in_shadow);
 			final_color = vec_add(final_color, light_contribution);
 			current = current->next;
 		}

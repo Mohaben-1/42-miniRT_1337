@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkerboard_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/11 20:51:41 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/11 22:40:51 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_color checker_sphere_uv(t_hit *hit, double scale)
 	t_vec p = vec_sub(hit->hit_data->point, hit->sphere->center);
 	double theta = atan2(p.z, p.x);
 	double phi = acos(p.y / hit->sphere->radius);
-	int u = (int)(theta / (2 * M_PI / scale));
-	int v = (int)(phi / (M_PI / scale));
+	int u = (int)(theta / (2 * PI / scale));
+	int v = (int)(phi / (PI / scale));
 	return ((u + v) % 2 == 0) ? vec_create(1, 1, 1) : vec_create(0, 0, 0);
 }
 
@@ -50,7 +50,7 @@ t_color checker_cylinder_uv(t_hit *hit, double scale)
 	t_vec binormal = vec_cross(up, around);
 	double height = vec_dot(p, up);
 	double angle = atan2(vec_dot(p, binormal), vec_dot(p, around));
-	int u = (int)(angle / (2 * M_PI / scale));
+	int u = (int)(angle / (2 * PI / scale));
 	int v = (int)(height / scale);
 	return ((u + v) % 2 == 0) ? vec_create(1, 1, 1) : vec_create(0, 0, 0);
 }
@@ -65,7 +65,7 @@ t_color checker_cone_uv(t_hit *hit, double scale)
 	t_vec binormal = vec_cross(axis, around);
 	double height = vec_dot(p, axis);
 	double angle = atan2(vec_dot(p, binormal), vec_dot(p, around));
-	int u = (int)(angle / (2 * M_PI / scale));
+	int u = (int)(angle / (2 * PI / scale));
 	int v = (int)(height / scale);
 	return ((u + v) % 2 == 0) ? vec_create(1, 1, 1) : vec_create(0, 0, 0);
 }

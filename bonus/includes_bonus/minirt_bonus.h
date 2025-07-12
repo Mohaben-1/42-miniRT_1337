@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/11 20:46:13 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:51:52 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
 int				hit_cone(t_cone cone, t_ray *ray, t_variation t, 
 					t_hit_data *hit_data);
 
-t_color	apply_checkerboard(t_hit *hit);
+// t_color	apply_checkerboard(t_hit *hit);
+t_color apply_checkerboard(t_hit *hit, t_object *obj);
 
 
 #endif

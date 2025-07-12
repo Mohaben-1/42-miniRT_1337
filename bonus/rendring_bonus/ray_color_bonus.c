@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/11 20:52:16 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/12 12:39:28 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,19 @@ t_hit_data	init_hit_data(void)
 // 		return (vec_create(0.0, 0.0, 0.0));
 // }
 
+
+t_object *get_object_by_id(t_object_list *scene, int id)
+{
+    t_object *obj = scene->head;
+    while (obj)
+    {
+        if (obj->id == id)
+            return obj;
+        obj = obj->next;
+    }
+    return NULL;
+}
+
 t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 {
 	t_light_list	*current;
@@ -97,18 +110,19 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 	t_color			final_color;
 	t_color			light_contribution;
 	t_material		material;
+	t_object 	*hit_obj;
 
 	hit.variation.min = 0;
 	hit.variation.max = HUGE_VAL;
 	hit.ray = &ray;
 	hit_data = init_hit_data();
 	hit.hit_data = &hit_data;
-
 	if (find_closest_hit(scene, hit.ray, hit.variation, hit.hit_data))
 	{
 		material = get_material(scene, hit.hit_data->object_id);
+		hit_obj = get_object_by_id(scene, hit_data.object_id);
 		if (material.texture_type == TEX_CHECKER)
-			material.color = apply_checkerboard(&hit);
+			material.color = apply_checkerboard(&hit, hit_obj);
 		final_color = vec_create(0, 0, 0);
 		current = lights;
 		while (current)

@@ -6,7 +6,7 @@
 /*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:25:12 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/14 23:56:17 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define CHECKER_SCALE 10
 
-t_color checker_plane(t_hit *hit, t_plane *plane)
+t_color	checker_plane(t_hit *hit, t_plane *plane)
 {
 	long	x;
 	long	y;
@@ -49,7 +49,7 @@ t_color	checker_sphere(t_hit *hit, t_sphere *sphere)
 		return (vec_create(0.0, 0.0, 0.0));
 }
 
-t_color checker_cylinder(t_hit *hit, t_cylinder *cyl)
+t_color	checker_cylinder(t_hit *hit, t_cylinder *cyl)
 {
 	t_vec	p;
 	float	theta;
@@ -66,7 +66,7 @@ t_color checker_cylinder(t_hit *hit, t_cylinder *cyl)
 		return (vec_create(1, 1, 1));
 }
 
-t_color checker_cone(t_hit *hit, t_cone *cone)
+t_color	checker_cone(t_hit *hit, t_cone *cone)
 {
 	t_vec p = vec_sub(hit->hit_data->point, cone->vertex);
 	t_vec axis = vec_normalize(cone->axis);
@@ -86,7 +86,7 @@ t_color checker_cone(t_hit *hit, t_cone *cone)
 		return (vec_create(1, 1, 1));
 }
 
-t_color apply_checkerboard(t_hit *hit, t_object *obj)
+t_color	apply_checkerboard(t_hit *hit, t_object *obj)
 {
 	if (obj->type == OBJ_SPHERE)
 		return (checker_sphere(hit, obj->sphere));

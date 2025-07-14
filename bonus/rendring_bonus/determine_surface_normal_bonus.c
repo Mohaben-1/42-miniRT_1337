@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   determine_surface_normal_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:35:04 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/10 19:40:01 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:53:08 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-void	determine_surface_normal(t_hit_data *hit_data, t_ray *ray, t_vec *out_normal)
+void	determine_surface_normal(t_hit_data *hit_data, t_ray *ray,
+		t_vec *out_normal)
 {
 	hit_data->is_front_face = vec_dot(ray->direction, *out_normal) < 0;
 	if (hit_data->is_front_face)

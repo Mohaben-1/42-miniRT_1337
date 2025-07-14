@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/12 12:39:28 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 12:52:34 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 		hit_obj = get_object_by_id(scene, hit_data.object_id);
 		if (material.texture_type == TEX_CHECKER)
 			material.color = apply_checkerboard(&hit, hit_obj);
+		else if (material.texture_type == TEX_BUMP)
+			hit.hit_data->normal = calculate_bump_normal(hit.hit_data, &material, hit_obj);
 		final_color = vec_create(0, 0, 0);
 		current = lights;
 		while (current)

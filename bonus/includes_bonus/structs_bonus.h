@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 20:21:47 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 12:18:03 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }	t_img;
+
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	char	*path;
+}	t_texture;
 
 typedef struct s_mlx
 {
@@ -124,6 +136,7 @@ typedef struct s_material
 	double			specular;
 	double			shininess;
 	t_texture_type	texture_type;
+	t_texture		*texture;
 }	t_material;
 
 typedef struct s_sphere

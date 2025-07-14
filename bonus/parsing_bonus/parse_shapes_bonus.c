@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/11 20:04:35 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 16:17:00 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id)
 	int			arg_count;
 	t_sphere	*sphere;
 
+	trim_trailing_whitespace_line(input);
 	splited = ft_split(input, ' ');
 	arg_count = ft_count_args(splited);
 	sphere = ft_calloc(1, sizeof(t_sphere));
@@ -29,12 +30,16 @@ void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id)
 	sphere->material.specular = 0.4;
 	sphere->material.shininess = 200;
 	sphere->material.color = parse_color(splited[3]);
+	sphere->material.texture = NULL;
 	if (arg_count == 5)
 	{
 		if (!ft_strncmp(splited[4], "checker", 7))
 			sphere->material.texture_type = TEX_CHECKER;
 		else
+		{
 			sphere->material.texture_type = TEX_BUMP;
+			sphere->material.texture = load_texture(splited[4], rt);
+		}
 	}
 	else
 		sphere->material.texture_type = TEX_NONE;
@@ -49,6 +54,7 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	int			arg_count;
 	t_cylinder	*cy;
 
+	trim_trailing_whitespace_line(input);
 	splited = ft_split(input, ' ');
 	arg_count = ft_count_args(splited);
 	cy = ft_calloc(1, sizeof(t_cylinder));
@@ -64,12 +70,16 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->material.specular = 0.4;
 	cy->material.shininess = 200;
 	cy->material.color = parse_color(splited[5]);
+	cy->material.texture = NULL;
 	if (arg_count == 7)
 	{
 		if (!ft_strncmp(splited[6], "checker", 7))
 			cy->material.texture_type = TEX_CHECKER;
 		else
+		{
 			cy->material.texture_type = TEX_BUMP;
+			cy->material.texture = load_texture(splited[6], rt);
+		}
 	}
 	else
 		cy->material.texture_type = TEX_NONE;
@@ -84,6 +94,7 @@ void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *id)
 	int		arg_count;
 	t_plane	*pl;
 
+	trim_trailing_whitespace_line(input);
 	splited = ft_split(input, ' ');
 	arg_count = ft_count_args(splited);
 	pl = ft_calloc(1, sizeof(t_plane));
@@ -94,13 +105,17 @@ void	parse_plane(char *input, t_object_list *scene, t_rt *rt, int *id)
 	pl->material.diffuse = 0.9;
 	pl->material.specular = 0.4;
 	pl->material.shininess = 200;
-	pl->material.color = parse_color(splited[3]);	
+	pl->material.color = parse_color(splited[3]);
+	pl->material.texture = NULL;
 	if (arg_count == 5)
 	{
 		if (!ft_strncmp(splited[4], "checker", 7))
 			pl->material.texture_type = TEX_CHECKER;
 		else
+		{
 			pl->material.texture_type = TEX_BUMP;
+			pl->material.texture = load_texture(splited[4], rt);
+		}
 	}
 	else
 		pl->material.texture_type = TEX_NONE;
@@ -115,6 +130,7 @@ void	parse_cone(char *input, t_object_list *scene, t_rt *rt, int *id)
 	int		arg_count;
 	t_cone	*cone;
 
+	trim_trailing_whitespace_line(input);
 	splited = ft_split(input, ' ');
 	arg_count = ft_count_args(splited);
 	cone = ft_calloc(1, sizeof(t_cone));
@@ -128,12 +144,16 @@ void	parse_cone(char *input, t_object_list *scene, t_rt *rt, int *id)
 	cone->material.specular = 0.4;
 	cone->material.shininess = 200;
 	cone->material.color = parse_color(splited[5]);
+	cone->material.texture = NULL;
 	if (arg_count == 7)
 	{
 		if (!ft_strncmp(splited[6], "checker", 7))
 			cone->material.texture_type = TEX_CHECKER;
 		else
+		{
 			cone->material.texture_type = TEX_BUMP;
+			cone->material.texture = load_texture(splited[6], rt);
+		}
 	}
 	else
 		cone->material.texture_type = TEX_NONE;

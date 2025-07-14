@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/12 11:51:52 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 12:53:04 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void			object_list_add(t_object_list *list, void *obj,
 					int id, int type);
 void			free_object_list(t_object_list *list);
 
+
+t_color			sample_texture(t_texture *texture, double u, double v);
+t_texture		*load_texture(char *path, t_rt *rt);
+
 // Vector Operations
 t_vec			vec_add(t_vec a, t_vec b);
 t_vec			vec_sub(t_vec a, t_vec b);
@@ -148,6 +152,12 @@ int				hit_cone(t_cone cone, t_ray *ray, t_variation t,
 
 // t_color	apply_checkerboard(t_hit *hit);
 t_color apply_checkerboard(t_hit *hit, t_object *obj);
+
+t_vec	calculate_bump_normal(t_hit_data *hit_data, t_material *material, 
+	t_object *obj);
+
+
+	void	free_texture(t_texture *texture, t_rt *rt);
 
 
 #endif

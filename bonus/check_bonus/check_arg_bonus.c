@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 20:00:46 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:53:11 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_args(int ac, char *file)
 {
-	size_t len;
+	size_t	len;
 
 	if (ac != 2)
 	{
@@ -66,7 +66,6 @@ int	check_valid_line(char *line, int line_num)
 	int	i;
 
 	i = 0;
-
 	while (line[i])
 	{
 		if (line[i] == '\r' || line[i] == '\t')
@@ -81,7 +80,7 @@ int	check_valid_line(char *line, int line_num)
 	return (1);
 }
 
-int check_line(char *line, int line_num)
+int	check_line(char *line, int line_num)
 {
 	if (!check_valid_line(line, line_num))
 		return (0);
@@ -113,7 +112,7 @@ int check_line(char *line, int line_num)
 int	check_file(char *file)
 {
 	char	*line;
-	int 	line_num;
+	int		line_num;
 	int		check;
 	int		fd;
 

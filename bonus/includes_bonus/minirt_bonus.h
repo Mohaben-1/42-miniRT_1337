@@ -6,11 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 12:53:04 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:56:55 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef MINIRT_BONUS_H
+#ifndef MINIRT_BONUS_H
 # define MINIRT_BONUS_H
 
 # include "structs_bonus.h"
@@ -42,7 +42,6 @@ char			*ft_strjoin(char *s1, char *s2);
 char			*get_next_line(int fd);
 void			trim_trailing_whitespace_line(char *line);
 void			free_dbl_ptr(void **ptr);
-
 
 // Parsing
 t_color			parse_color(char *input);
@@ -79,8 +78,6 @@ int				check_cone(char *line);
 void			object_list_add(t_object_list *list, void *obj,
 					int id, int type);
 void			free_object_list(t_object_list *list);
-
-
 t_color			sample_texture(t_texture *texture, double u, double v);
 t_texture		*load_texture(char *path, t_rt *rt);
 
@@ -149,15 +146,8 @@ int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 int				hit_cone(t_cone cone, t_ray *ray, t_variation t, 
 					t_hit_data *hit_data);
-
-// t_color	apply_checkerboard(t_hit *hit);
-t_color apply_checkerboard(t_hit *hit, t_object *obj);
-
-t_vec	calculate_bump_normal(t_hit_data *hit_data, t_material *material, 
-	t_object *obj);
-
-
-	void	free_texture(t_texture *texture, t_rt *rt);
-
+t_color			apply_checkerboard(t_hit *hit, t_object *obj);
+t_vec			calculate_bump_normal(t_hit_data *hit_data, t_material *material, 
+					t_object *obj);
 
 #endif

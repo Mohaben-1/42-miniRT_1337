@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_list_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 20:48:12 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 12:55:05 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:30:32 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	object_list_add(t_object_list *list, void *obj, int id, int type)
 	else if (type == OBJ_CYLINDER)
 		new->cylinder = (t_cylinder *)obj;
 	else if (type == OBJ_CONE)
-	    new->cone = (t_cone *)obj;
+		new->cone = (t_cone *)obj;
 	list->head = new;
 }
 
@@ -45,8 +45,8 @@ void	free_object_list(t_object_list *list)
 			free(tmp->plane);
 		else if (tmp->type == OBJ_CYLINDER)
 			free(tmp->cylinder);
-		// else if (tmp->type == OBJ_CONE)
-		//     free(tmp->cone);
+		else if (tmp->type == OBJ_CONE)
+			free(tmp->cone);
 		free(tmp);
 	}
 	free(list);

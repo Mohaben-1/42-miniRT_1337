@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkerboard_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 20:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/12 16:51:51 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:25:12 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_color checker_cylinder(t_hit *hit, t_cylinder *cyl)
 
 	p = vec_sub(hit->hit_data->point, cyl->center);
 	theta = atan2(p.z, p.x);
-	u = (theta + M_PI) / (2 * M_PI);
+	u = (theta + PI) / (2 * PI);
 	v = p.y;
 	if (((int)floor(u * CHECKER_SCALE) + (int)floor(v * CHECKER_SCALE)) % 2 == 0)
 		return (vec_create(0, 0, 0));

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:38:33 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 12:53:14 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:31:47 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes_bonus/minirt_bonus.h"
 
-void	ff()
+void	ff(void)
 {
 	system("leaks -q miniRT");
 }

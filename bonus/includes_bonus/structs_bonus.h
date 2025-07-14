@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 12:18:03 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:28:24 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	STRUCTS_BONUS_H
-#define STRUCTS_BONUS_H
+#ifndef STRUCTS_BONUS_H
+# define STRUCTS_BONUS_H
 
 # include <stdlib.h>
 # include <fcntl.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 20:56:55 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:27:38 by medd             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			parse_cone(char *input, t_object_list *scene,
 int				check_args(int ac, char *file);
 int				check_file(char *file);
 int				check_position(char *position);
-int 			check_vec(char **vec);
+int				check_vec(char **vec);
 int				check_normal(char *normal);
 int				check_float(char *line);
 int				check_double(char *line);
@@ -144,10 +144,10 @@ int				hit_plane(t_plane plane, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
-int				hit_cone(t_cone cone, t_ray *ray, t_variation t, 
+int				hit_cone(t_cone cone, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 t_color			apply_checkerboard(t_hit *hit, t_object *obj);
-t_vec			calculate_bump_normal(t_hit_data *hit_data, t_material *material, 
-					t_object *obj);
+t_vec			calculate_bump_normal(t_hit_data *hit_data,
+					t_material *material, t_object *obj);
 
 #endif

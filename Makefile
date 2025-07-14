@@ -27,7 +27,8 @@ SRCS_BNS =  bonus/main_bonus.c \
 			bonus/check_bonus/check_cylinder_bonus.c bonus/check_bonus/check_light_bonus.c bonus/check_bonus/check_plane_bonus.c \
 			bonus/check_bonus/check_sphere_bonus.c bonus/check_bonus/check_utils_bonus.c bonus/check_bonus/check_cone_bonus.c \
 			bonus/check_bonus/check_texture_bonus.c bonus/check_bonus/check_utils2_bonus.c bonus/check_bonus/check_vecs_bonus.c \
-			bonus/parsing_bonus/parse_elements_bonus.c bonus/parsing_bonus/parse_shapes_bonus.c bonus/parsing_bonus/init_rt_bonus.c bonus/parsing_bonus/create_scene_bonus.c \
+			bonus/parsing_bonus/parse_elements_bonus.c bonus/parsing_bonus/init_rt_bonus.c bonus/parsing_bonus/create_scene_bonus.c \
+			bonus/parsing_bonus/parse_cylinder_bonus.c bonus/parsing_bonus/parse_cone_bonus.c bonus/parsing_bonus/parse_sphere_bonus.c bonus/parsing_bonus/parse_plane_bonus.c \
 			bonus/math_bonus/vec_ops_bonus.c  bonus/math_bonus/vec_ops_2_bonus.c bonus/math_bonus/vec_create_bonus.c bonus/math_bonus/vec_utils_bonus.c \
 			bonus/mlx_utils_bonus/ft_mlx_events_bonus.c bonus/mlx_utils_bonus/mlx_init_bonus.c bonus/mlx_utils_bonus/mlx_pixel_draw_bonus.c bonus/mlx_utils_bonus/mlx_image_to_window_bonus.c \
 			bonus/utils_bonus/free_bonus.c bonus/utils_bonus/ft_atoi_bonus.c bonus/utils_bonus/ft_count_args_bonus.c bonus/utils_bonus/ft_isspace_bonus.c bonus/utils_bonus/ft_putnbr_fd_bonus.c bonus/utils_bonus/ft_split_bonus.c  bonus/utils_bonus/ft_strdup_bonus.c bonus/utils_bonus/ft_strncmp_bonus.c bonus/utils_bonus/get_next_line_bonus.c bonus/utils_bonus/object_list_bonus.c \

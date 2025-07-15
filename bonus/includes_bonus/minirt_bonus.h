@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:31:21 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:11:08 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ t_vec			vec_create(double x, double y, double z);
 // Mlx utils
 void			ft_mlx_init(t_rt *rt);
 void			ft_mlx_events(t_rt *rt);
+t_texture		*load_texture(char *path, t_rt *rt);
 void			mlx_image_to_window(t_rt *rt, int x, int y);
 void			mlx_pixel_draw(t_img *image, int x, int y, int color);
 int				handle_close(t_rt *rt);
@@ -146,9 +147,15 @@ int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 int				hit_cone(t_cone cone, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
+t_color			checker_cone(t_hit *hit, t_cone *cone);
 t_color			apply_checkerboard(t_hit *hit, t_object *obj);
 t_vec			calculate_bump_normal(t_hit_data *hit_data,
 					t_material *material, t_object *obj);
 void			free_texture(t_texture *texture, t_rt *rt);
+t_color			sample_texture(t_texture *texture, double u, double v);
+void			get_sphere_uv(t_vec point, t_sphere *sphere, double *u, double *v);
+void			get_plane_uv(t_vec point, t_plane *plane, double *u, double *v);
+void			get_cylinder_uv(t_vec point, t_cylinder *cyl, double *u, double *v);
+void			get_cone_uv(t_vec point, t_cone *cone, double *u, double *v);
 
 #endif

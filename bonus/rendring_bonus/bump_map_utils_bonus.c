@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:18:23 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 15:52:31 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:27:34 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_color	sample_texture(t_texture *texture, double u, double v)
 {
-	t_color	result;
-	char	*pixel;
-	int		color;
-	int		x;
-	int		y;
+	t_color		result;
+	uint8_t		*pixels;
+	uint32_t	pixel;
+	int			x;
+	int			y;
 
-	if (!texture || !texture->addr)
+	if (!texture || !texture->texture)
 		return (vec_create(1, 1, 1));
 	u = fmod(u, 1.0);
 	v = fmod(v, 1.0);
@@ -30,11 +30,11 @@ t_color	sample_texture(t_texture *texture, double u, double v)
 		v += 1.0;
 	x = (int)(u * texture->width) % texture->width;
 	y = (int)(v * texture->height) % texture->height;
-	pixel = texture->addr + (y * texture->line_len + x * (texture->bpp / 8));
-	color = *(int *)pixel;
-	result.r = ((color >> 16) & 0xFF) / 255.0;
-	result.g = ((color >> 8) & 0xFF) / 255.0;
-	result.b = (color & 0xFF) / 255.0;
+	pixels = texture->texture->pixels;
+	pixel = ((uint32_t *)pixels)[y * texture->width + x];
+	result.r = ((pixel) & 0xFF) / 255.0;
+	result.g = ((pixel >> 8) & 0xFF) / 255.0;
+	result.b = ((pixel >> 16) & 0xFF) / 255.0;
 	return (result);
 }
 

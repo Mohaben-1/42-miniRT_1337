@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:47:31 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:55:04 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 18:29:43 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 
 // Sphere
 # define ERR_ARGS_S1 "Error\nInvalid sphere: expected format 'sp"
-# define ERR_ARGS_S2 " x,y,z diameter r,g,b [bump_texture_path or checker]'\n"
+# define ERR_ARGS_S2 " x,y,z diameter r,g,b [bump_map_path or checker]'\n"
 # define ERR_POS_S1 "Error\nInvalid sphere position: "
 # define ERR_POS_S2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_DIAMETER_S1 "Error\nInvalid sphere diameter: "
@@ -61,7 +61,7 @@
 // Cylinder
 # define ERR_ARGS_CY1 "Error\nInvalid cylinder: expected format "
 # define ERR_ARGS_CY2 "'cy center_x,y,z axis_x,y,z diameter "
-# define ERR_ARGS_CY3 "height r,g,b [bump_texture_path or checker]'\n"
+# define ERR_ARGS_CY3 "height r,g,b [bump_map_path or checker]'\n"
 # define ERR_POS_CY1 "Error\nInvalid cylinder position: "
 # define ERR_POS_CY2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_NORMALE_CY1 "Error\nInvalid cylinder axis vector: "
@@ -76,7 +76,7 @@
 // Plane
 # define ERR_ARGS_P1 "Error\nInvalid plane: expected "
 # define ERR_ARGS_P2 "format 'pl x,y,z normal_x,normal_y,normal_z '\n"
-# define ERR_ARGS_P3 "r,g,b [bump_texture_path or checker]'\n"
+# define ERR_ARGS_P3 "r,g,b [bump_map_path or checker]'\n"
 # define ERR_POS_P1 "Error\nInvalid plane position: "
 # define ERR_POS_P2 "expected 'x,y,z' with numeric values.\n"
 # define ERR_NORMAL_P1 "Error\nInvalid plane normal vector: "
@@ -87,7 +87,7 @@
 // Cone
 # define ERR_ARGS_CN1 "Error\nInvalid cone format: expected"
 # define ERR_ARGS_CN2 " 'co pos_x,y,z axis_x,y,z "
-# define ERR_ARGS_CN3 "height angle r,g,b [bump_texture_path or checker]'\n"
+# define ERR_ARGS_CN3 "height angle r,g,b [bump_map_path or checker]'\n"
 # define ERR_POS_CN "Error\nInvalid cone position: expected format 'x,y,z'.\n"
 # define ERR_NRM_CN1 "Error\nInvalid cone axis: must be "
 # define ERR_NRM_CN2 "a normalized vector 'x,y,z'.\n"
@@ -97,7 +97,7 @@
 # define ERR_CLR_CN "Error\nInvalid cone color: expected format 'r,g,b'.\n"
 
 // BONUS
-# define ERR_BNS1 "Error\nExpected either a '.xpm' "
+# define ERR_BNS1 "Error\nExpected either a '.png' "
 # define ERR_BNS2 "bump map texture or 'checker' keyword.\n"
 
 #endif

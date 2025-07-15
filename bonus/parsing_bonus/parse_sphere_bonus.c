@@ -6,13 +6,13 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 15:13:37 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:41:21 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-static void	set_texture_type(t_sphere *sphere, t_rt *rt, int arg_count,
+static void	set_texture_type(t_sphere *sphere, int arg_count,
 	char *str)
 {
 	if (arg_count == 5)
@@ -22,7 +22,7 @@ static void	set_texture_type(t_sphere *sphere, t_rt *rt, int arg_count,
 		else
 		{
 			sphere->material.texture_type = TEX_BUMP;
-			sphere->material.texture = load_texture(str, rt);
+			sphere->material.texture = load_texture(str);
 		}
 	}
 	else
@@ -48,7 +48,7 @@ void	parse_sphere(char *input, t_object_list *scene, t_rt *rt, int *id)
 	sphere->material.shininess = 200;
 	sphere->material.color = parse_color(splited[3]);
 	sphere->material.texture = NULL;
-	set_texture_type(sphere, rt, arg_count, splited[4]);
+	set_texture_type(sphere, arg_count, splited[4]);
 	object_list_add(scene, sphere, *id, OBJ_SPHERE);
 	free_dbl_ptr((void **)splited);
 	(*id)++;

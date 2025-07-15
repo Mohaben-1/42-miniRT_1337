@@ -6,13 +6,13 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:57:32 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:41:05 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-static void	set_texture_type(t_cylinder *cy, t_rt *rt, int arg_count, char *str)
+static void	set_texture_type(t_cylinder *cy, int arg_count, char *str)
 {
 	cy->material.texture = NULL;
 	if (arg_count == 7)
@@ -22,7 +22,7 @@ static void	set_texture_type(t_cylinder *cy, t_rt *rt, int arg_count, char *str)
 		else
 		{
 			cy->material.texture_type = TEX_BUMP;
-			cy->material.texture = load_texture(str, rt);
+			cy->material.texture = load_texture(str);
 		}
 	}
 	else
@@ -52,7 +52,7 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->material.specular = 0.4;
 	cy->material.shininess = 200;
 	cy->material.color = parse_color(splited[5]);
-	set_texture_type(cy, rt, arg_count, splited[6]);
+	set_texture_type(cy, arg_count, splited[6]);
 	object_list_add(lst, cy, *id, OBJ_CYLINDER);
 	free_dbl_ptr((void **)splited);
 	(*id)++;

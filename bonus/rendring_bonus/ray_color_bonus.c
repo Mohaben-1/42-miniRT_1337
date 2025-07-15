@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/14 12:52:34 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:33:06 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,34 +71,16 @@ t_hit_data	init_hit_data(void)
 	return (new);
 }
 
-// t_color	apply_checkerboard(t_hit *hit)
-// {
-// 	double	scale;
-// 	long	x;
-// 	long	y;
-// 	long	z;
-
-// 	scale = 0.1;
-// 	x = (long)(hit->hit_data->point.x / scale);
-// 	y = (long)(hit->hit_data->point.y / scale);
-// 	z = (long)(hit->hit_data->point.z / scale);
-// 	if ((x + y + z) % 2 == 0)
-// 		return (vec_create(1.0, 1.0, 1.0));
-// 	else
-// 		return (vec_create(0.0, 0.0, 0.0));
-// }
-
-
 t_object *get_object_by_id(t_object_list *scene, int id)
 {
-    t_object *obj = scene->head;
-    while (obj)
-    {
-        if (obj->id == id)
-            return obj;
-        obj = obj->next;
-    }
-    return NULL;
+	t_object *obj = scene->head;
+	while (obj)
+	{
+		if (obj->id == id)
+			return obj;
+		obj = obj->next;
+	}
+	return NULL;
 }
 
 t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
@@ -124,7 +106,10 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 		if (material.texture_type == TEX_CHECKER)
 			material.color = apply_checkerboard(&hit, hit_obj);
 		else if (material.texture_type == TEX_BUMP)
+		{
+			// material.color = apply_png_texture(&hit, hit_obj, &material);
 			hit.hit_data->normal = calculate_bump_normal(hit.hit_data, &material, hit_obj);
+		}
 		final_color = vec_create(0, 0, 0);
 		current = lights;
 		while (current)

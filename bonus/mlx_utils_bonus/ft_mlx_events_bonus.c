@@ -6,46 +6,46 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:39:19 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:46:08 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-int	handle_close(t_rt *rt)
+void	handle_close(void *param)
 {
+	t_rt		*rt;
 	t_object	*current;
 
-	mlx_destroy_image(rt->mlx.ptr, rt->img.img);
-	mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+	rt = (t_rt *)param;
 	current = rt->scene->head;
 	while (current)
 	{
 		if (current->type == OBJ_CONE)
-			free_texture(current->cone->material.texture, rt);
+			free_texture(current->cone->material.texture);
 		else if (current->type == OBJ_CYLINDER)
-			free_texture(current->cylinder->material.texture, rt);
+			free_texture(current->cylinder->material.texture);
 		else if (current->type == OBJ_PLANE)
-			free_texture(current->plane->material.texture, rt);
+			free_texture(current->plane->material.texture);
 		else if (current->type == OBJ_SPHERE)
-			free_texture(current->sphere->material.texture, rt);
+			free_texture(current->sphere->material.texture);
 		current = current->next;
 	}
 	free_object_list(rt->scene);
+	mlx_delete_image(rt->mlx.ptr, rt->img.img);
+	mlx_terminate(rt->mlx.ptr);
 	exit(0);
 }
 
-int	hande_esc(int keycode, t_rt *rt)
+void	handle_esc(mlx_key_data_t keydata, void *param)
 {
-	if (keycode == 53)
-		handle_close(rt);
-	return (0);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		handle_close(param);
 }
 
 void	ft_mlx_events(t_rt *rt)
 {
-	mlx_key_hook(rt->mlx.window, hande_esc, rt);
-	mlx_hook(rt->mlx.window, 17, 0, handle_close, rt);
+	mlx_key_hook(rt->mlx.ptr, handle_esc, rt);
+	mlx_close_hook(rt->mlx.ptr, handle_close, rt);
 	mlx_loop(rt->mlx.ptr);
-	handle_close(rt);
 }

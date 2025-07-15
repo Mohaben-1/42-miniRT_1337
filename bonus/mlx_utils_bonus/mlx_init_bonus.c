@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:22:00 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 15:33:37 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:09:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 void	ft_mlx_init_helper(t_rt *rt)
 {
-	rt->mlx.ptr = mlx_init();
+	rt->mlx.ptr = mlx_init(WIDTH, HEIGHT, TITLE, true);
 	if (!rt->mlx.ptr)
-	{
-		ft_putstr_fd("Error\nFailed to initialize MLX!\n", 2);
-		exit(1);
-	}
-	rt->mlx.window = mlx_new_window(rt->mlx.ptr, WIDTH, HEIGHT, TITLE);
-	if (!rt->mlx.window)
 	{
 		ft_putstr_fd("Error\nFailed to initialize MLX!\n", 2);
 		exit(1);
@@ -30,12 +24,12 @@ void	ft_mlx_init_helper(t_rt *rt)
 	if (!rt->img.img)
 	{
 		ft_putstr_fd("Error\nFailed to create image!\n", 2);
-		mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+		mlx_terminate(rt->mlx.ptr);
 		exit(1);
 	}
 }
 
-t_texture	*load_texture(char *path, t_rt *rt)
+t_texture	*load_texture(char *path)
 {
 	t_texture	*texture;
 	char		*actual_path;
@@ -43,33 +37,35 @@ t_texture	*load_texture(char *path, t_rt *rt)
 	texture = ft_calloc(1, sizeof(t_texture));
 	if (!texture)
 		return (NULL);
-	actual_path = path + 3;
+	actual_path = path + 5;
 	texture->path = actual_path;
-	texture->img = mlx_xpm_file_to_image(rt->mlx.ptr, actual_path,
-			&texture->width, &texture->height);
-	if (!texture->img)
+	texture->texture = mlx_load_png(actual_path);
+	if (!texture->texture)
 	{
-		ft_putstr_fd("Error\nFailed to load texture: ", 2);
+		ft_putstr_fd("Error\nFailed to load bump map: ", 2);
 		ft_putstr_fd(actual_path, 2);
 		ft_putstr_fd("\n", 2);
 		free(texture);
 		return (NULL);
 	}
-	texture->addr = mlx_get_data_addr(texture->img, &texture->bpp,
-			&texture->line_len, &texture->endian);
+	texture->width = texture->texture->width;
+	texture->height = texture->texture->height;
+	if (texture->width == 0 || texture->height == 0)
+	{
+		ft_putstr_fd("Error: Invalid texture dimensions\n", 2);
+		return (mlx_delete_texture(texture->texture), free(texture), NULL);
+	}
 	return (texture);
 }
 
 void	ft_mlx_init(t_rt *rt)
 {
 	ft_mlx_init_helper(rt);
-	rt->img.addr = mlx_get_data_addr(rt->img.img, &(rt->img.bpp),
-			&(rt->img.line_len), &(rt->img.endian));
-	if (!rt->img.addr)
+	if (mlx_image_to_window(rt->mlx.ptr, rt->img.img, 0, 0) < 0)
 	{
-		ft_putstr_fd("Error: Failed to get image data address\n", 2);
-		mlx_destroy_image(rt->mlx.ptr, rt->img.img);
-		mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+		ft_putstr_fd("Error: Failed to put image to window\n", 2);
+		mlx_delete_image(rt->mlx.ptr, rt->img.img);
+		mlx_terminate(rt->mlx.ptr);
 		exit(1);
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:57:30 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:40:58 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-static void	set_texture_type(t_cone *cone, t_rt *rt, int arg_count, char *str)
+static void	set_texture_type(t_cone *cone, int arg_count, char *str)
 {
 	if (arg_count == 7)
 	{
@@ -21,7 +21,7 @@ static void	set_texture_type(t_cone *cone, t_rt *rt, int arg_count, char *str)
 		else
 		{
 			cone->material.texture_type = TEX_BUMP;
-			cone->material.texture = load_texture(str, rt);
+			cone->material.texture = load_texture(str);
 		}
 	}
 	else
@@ -49,7 +49,7 @@ void	parse_cone(char *input, t_object_list *scene, t_rt *rt, int *id)
 	cone->material.shininess = 200;
 	cone->material.color = parse_color(splited[5]);
 	cone->material.texture = NULL;
-	set_texture_type(cone, rt, arg_count, splited[6]);
+	set_texture_type(cone, arg_count, splited[6]);
 	object_list_add(scene, cone, *id, OBJ_CONE);
 	free_dbl_ptr((void **)splited);
 	(*id)++;

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 16:11:08 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:51:12 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void			object_list_add(t_object_list *list, void *obj,
 					int id, int type);
 void			free_object_list(t_object_list *list);
 t_color			sample_texture(t_texture *texture, double u, double v);
-t_texture		*load_texture(char *path, t_rt *rt);
 
 // Vector Operations
 t_vec			vec_add(t_vec a, t_vec b);
@@ -101,11 +100,10 @@ t_vec			vec_create(double x, double y, double z);
 
 // Mlx utils
 void			ft_mlx_init(t_rt *rt);
-void			ft_mlx_events(t_rt *rt);
-t_texture		*load_texture(char *path, t_rt *rt);
-void			mlx_image_to_window(t_rt *rt, int x, int y);
+t_texture		*load_texture(char *path);
 void			mlx_pixel_draw(t_img *image, int x, int y, int color);
-int				handle_close(t_rt *rt);
+void			ft_mlx_events(t_rt *rt);
+void			handle_close(void *param);
 
 // Init scene
 void			create_scene(t_rt *rt, int fd);
@@ -130,7 +128,7 @@ int				is_valid_intersection(double h, double rt, t_hit *hit);
 void			set_hit_data(t_hit *hit, double rt, t_vec point);
 int				hit_caps(t_cylinder c, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
-unsigned long	color_rgb(t_color *color);
+uint32_t		color_rgb(t_color *color);
 int				find_closest_hit(t_object_list *list, t_ray *ray,
 					t_variation t, t_hit_data *hit_data);
 void			update_hit_data(t_hit_data *hit_data, t_vec hit_point,
@@ -151,7 +149,8 @@ t_color			checker_cone(t_hit *hit, t_cone *cone);
 t_color			apply_checkerboard(t_hit *hit, t_object *obj);
 t_vec			calculate_bump_normal(t_hit_data *hit_data,
 					t_material *material, t_object *obj);
-void			free_texture(t_texture *texture, t_rt *rt);
+void			free_texture(t_texture *texture);
+t_color			apply_png_texture(t_hit *hit, t_object *obj, t_material *material);
 t_color			sample_texture(t_texture *texture, double u, double v);
 void			get_sphere_uv(t_vec point, t_sphere *sphere, double *u, double *v);
 void			get_plane_uv(t_vec point, t_plane *plane, double *u, double *v);

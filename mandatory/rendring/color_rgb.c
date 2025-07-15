@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:12:49 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/15 21:57:05 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:21:22 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ uint32_t	color_rgb(t_color *color)
 	g = (int)(255.999 * color->g);
 	b = (int)(255.999 * color->b);
 	a = 255;
-	return (((r & 0xff) << 24) + ((g & 0xff) << 16) + ((b & 0xff) << 8) + (a & 0xff));
+	return (((r & 0xff) << 24) + ((g & 0xff) << 16)
+		+ ((b & 0xff) << 8) + (a & 0xff));
 }

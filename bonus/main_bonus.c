@@ -6,23 +6,17 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:38:33 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 11:26:12 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:19:39 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes_bonus/minirt_bonus.h"
-
-void	ff(void)
-{
-	system("leaks -q miniRT");
-}
 
 int	main(int ac, char **av)
 {
 	t_rt	rt;
 	int		fd;
 
-	atexit(ff);
 	if (!check_args(ac, av[1]) || !check_file(av[1]))
 		return (1);
 	ft_bzero(&rt, 1);

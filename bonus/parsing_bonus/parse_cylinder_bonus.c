@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:48:34 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:57:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-void	set_texture_type(t_cylinder *cy, t_rt *rt, int arg_count, char *str)
+static void	set_texture_type(t_cylinder *cy, t_rt *rt, int arg_count, char *str)
 {
+	cy->material.texture = NULL;
 	if (arg_count == 7)
 	{
 		if (!ft_strncmp(str, "checker", 7))
@@ -44,13 +45,13 @@ void	parse_cylinder(char *input, t_object_list *lst, t_rt *rt, int *id)
 	cy->height = ft_atof(splited[4]);
 	cy->type = OBJ_CYLINDER;
 	cy->cap_top = vec_add(cy->center, vec_scale(cy->axis, cy->height / 2.0));
-	cy->cap_bottom = vec_add(cy->center, vec_scale(cy->axis, -cy->height / 2.0));
+	cy->cap_bottom = vec_add(cy->center,
+			vec_scale(cy->axis, -(cy->height / 2.0)));
 	cy->material.ambient = rt->ambient.ratio;
 	cy->material.diffuse = 0.9;
 	cy->material.specular = 0.4;
 	cy->material.shininess = 200;
 	cy->material.color = parse_color(splited[5]);
-	cy->material.texture = NULL;
 	set_texture_type(cy, rt, arg_count, splited[6]);
 	object_list_add(lst, cy, *id, OBJ_CYLINDER);
 	free_dbl_ptr((void **)splited);

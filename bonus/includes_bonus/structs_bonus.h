@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:28:24 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:57:07 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <math.h>
 # include <mlx.h>
 
-# define TITLE "MiniRT_bonus (aba bonus khay)"
+# define TITLE "MiniRT (aba bonus khay)"
 # define WIDTH 1900.0
 # define HEIGHT 1100.0
 # define PI 3.1415926535897932385

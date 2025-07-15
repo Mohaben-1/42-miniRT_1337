@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:19:39 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/10 19:40:07 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:22:32 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	set_closest_hit(double *closest, t_hit_data *tmp_hit,
 	closest_hit->object_id = obj_id;
 	return (1);
 }
-
-#include <stdio.h>
 
 int	find_closest_hit(t_object_list *list, t_ray *ray,
 			t_variation t, t_hit_data *closest_hit)

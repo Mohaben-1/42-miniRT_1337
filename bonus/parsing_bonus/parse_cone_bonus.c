@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cone_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:46:42 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:57:30 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-void	set_texture_type(t_cone *cone, t_rt *rt, int arg_count, char *str)
+static void	set_texture_type(t_cone *cone, t_rt *rt, int arg_count, char *str)
 {
 	if (arg_count == 7)
 	{

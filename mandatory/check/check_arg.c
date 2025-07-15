@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:50:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 10:34:12 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:58:53 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	check_line(char *line, int line_num)
 	{
 		ft_putstr_fd("Error\nInvalid line at line ", 2);
 		ft_putnbr_fd(line_num, 2);
-		ft_putstr_fd(": '", 2);
+		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(line, 2);
-		return (ft_putstr_fd("'\n", 2), 0);
+		return (0);
 	}
 	return (1);
 }

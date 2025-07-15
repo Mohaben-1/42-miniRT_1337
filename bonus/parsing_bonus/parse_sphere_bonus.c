@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:30:16 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:43:34 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:17:23 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
 
-void	set_texture_type(t_sphere *sphere, t_rt *rt, int arg_count, char *str)
+static void	set_texture_type(t_sphere *sphere, t_rt *rt, int arg_count,
+	char *str)
 {
 	if (arg_count == 5)
 	{

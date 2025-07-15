@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 13:57:02 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:39:19 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,23 @@
 
 int	handle_close(t_rt *rt)
 {
+	t_object	*current;
+
 	mlx_destroy_image(rt->mlx.ptr, rt->img.img);
 	mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+	current = rt->scene->head;
+	while (current)
+	{
+		if (current->type == OBJ_CONE)
+			free_texture(current->cone->material.texture, rt);
+		else if (current->type == OBJ_CYLINDER)
+			free_texture(current->cylinder->material.texture, rt);
+		else if (current->type == OBJ_PLANE)
+			free_texture(current->plane->material.texture, rt);
+		else if (current->type == OBJ_SPHERE)
+			free_texture(current->sphere->material.texture, rt);
+		current = current->next;
+	}
 	free_object_list(rt->scene);
 	exit(0);
 }

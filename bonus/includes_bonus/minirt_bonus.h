@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:27:38 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:31:21 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,6 @@ int				hit_cone(t_cone cone, t_ray *ray, t_variation t,
 t_color			apply_checkerboard(t_hit *hit, t_object *obj);
 t_vec			calculate_bump_normal(t_hit_data *hit_data,
 					t_material *material, t_object *obj);
+void			free_texture(t_texture *texture, t_rt *rt);
 
 #endif

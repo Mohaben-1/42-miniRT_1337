@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: medd <medd@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:38:33 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/14 23:31:47 by medd             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:26:12 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	t_rt	rt;
 	int		fd;
 
+	atexit(ff);
 	if (!check_args(ac, av[1]) || !check_file(av[1]))
 		return (1);
 	ft_bzero(&rt, 1);
@@ -29,7 +30,9 @@ int	main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	init_rt(&rt, fd);
 	close(fd);
+	ft_putstr_fd("Loading the scene...\n", 1);
 	render(&rt);
+	ft_putstr_fd("Scene loaded.\n", 1);
 	ft_mlx_events(&rt);
 	return (0);
 }

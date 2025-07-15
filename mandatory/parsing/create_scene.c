@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:28:42 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/08 20:38:26 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:55:31 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	create_scene(t_rt *rt, int fd)
 	if (!scene)
 	{
 		ft_putstr_fd("Error\nMemory allocation failed!\n", 2);
-		mlx_destroy_image(rt->mlx.ptr, rt->img.img);
-		mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+		mlx_delete_image(rt->mlx.ptr, rt->img.img);
+		mlx_terminate(rt->mlx.ptr);
 		exit(1);
 	}
 	rt->scene = scene;

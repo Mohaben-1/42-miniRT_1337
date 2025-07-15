@@ -16,7 +16,7 @@ SRCS		= mandatory/main.c \
 			mandatory/rendring/hit_sphere.c mandatory/rendring/hit_detection.c mandatory/rendring/lighting.c mandatory/rendring/ray_color.c \
 			mandatory/rendring/render_scene.c mandatory/rendring/rendering.c mandatory/rendring/determine_surface_normal.c \
 			mandatory/rendring/project_onto_plane.c mandatory/rendring/cylinder_utils.c mandatory/rendring/ray_shadow.c \
-			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c mandatory/mlx_utils/mlx_pixel_draw.c mandatory/mlx_utils/mlx_image_to_window.c  \
+			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c mandatory/mlx_utils/mlx_pixel_draw.c \
 			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c mandatory/utils/ft_trim_line.c \
 			mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list.c mandatory/utils/ft_strjoin.c mandatory/utils/ft_strchr.c \
 			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/ft_isalnum.c

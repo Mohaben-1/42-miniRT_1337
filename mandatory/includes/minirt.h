@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 10:33:38 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:57:22 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ t_color			color_create(double r, double g, double b);
 t_vec			vec_create(double x, double y, double z);
 
 // Mlx utils
+
 void			ft_mlx_init(t_rt *rt);
 void			ft_mlx_events(t_rt *rt);
-void			mlx_image_to_window(t_rt *rt, int x, int y);
 void			mlx_pixel_draw(t_img *image, int x, int y, int color);
-int				handle_close(t_rt *rt);
+void			handle_close(void *param);
 
 // Init scene
 void			create_scene(t_rt *rt, int fd);
@@ -125,7 +125,7 @@ int				is_valid_intersection(double h, double rt, t_hit *hit);
 void			set_hit_data(t_hit *hit, double rt, t_vec point);
 int				hit_caps(t_cylinder c, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
-unsigned long	color_rgb(t_color *color);
+uint32_t		color_rgb(t_color *color);
 int				find_closest_hit(t_object_list *list, t_ray *ray,
 					t_variation t, t_hit_data *hit_data);
 void			update_hit_data(t_hit_data *hit_data, t_vec hit_point,

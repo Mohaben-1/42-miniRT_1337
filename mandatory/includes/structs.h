@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/10 16:11:41 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:45:25 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+# include "../../MLX42/include/MLX42/MLX42.h"
 
 # define TITLE "MiniRT (aba hayat khay)"
 # define WIDTH 1900.0
@@ -32,11 +32,7 @@
 
 typedef struct s_img
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	mlx_image_t	*img;
 }	t_img;
 
 typedef struct s_mlx

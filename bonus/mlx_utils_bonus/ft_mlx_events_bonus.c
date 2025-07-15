@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 17:46:08 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:18:57 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	handle_close(void *param)
 	free_object_list(rt->scene);
 	mlx_delete_image(rt->mlx.ptr, rt->img.img);
 	mlx_terminate(rt->mlx.ptr);
+	ft_putstr_fd("\033[31m👋 Exiting MiniRT... Goodbye!\033[0m\n", 1);
 	exit(0);
 }
 

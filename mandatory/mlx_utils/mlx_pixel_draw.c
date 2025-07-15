@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 13:11:26 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/08 20:36:35 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:49:06 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	mlx_pixel_draw(t_img *image, int x, int y, int color)
 {
-	char	*pixel;
-
-	pixel = image->addr + (y * image->line_len + x * (image->bpp / 8));
-	*(int *)pixel = color;
+	if (x >= 0 && x < (int)image->img->width && y >= 0 
+		&& y < (int)image->img->height)
+		mlx_put_pixel(image->img, x, y, color);
 }

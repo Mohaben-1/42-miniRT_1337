@@ -6,31 +6,33 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:11:35 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/03 11:56:00 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:18:07 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
 
-int	handle_close(t_rt *rt)
+void	handle_close(void *param)
 {
-	mlx_destroy_image(rt->mlx.ptr, rt->img.img);
-	mlx_destroy_window(rt->mlx.ptr, rt->mlx.window);
+	t_rt		*rt;
+
+	rt = (t_rt *)param;
+	mlx_delete_image(rt->mlx.ptr, rt->img.img);
+	mlx_terminate(rt->mlx.ptr);
 	free_object_list(rt->scene);
+	ft_putstr_fd("\033[31m👋 Exiting MiniRT... Goodbye!\033[0m\n", 1);
 	exit(0);
 }
 
-int	hande_esc(int keycode, t_rt *rt)
+void	handle_esc(mlx_key_data_t keydata, void *param)
 {
-	if (keycode == 53)
-		handle_close(rt);
-	return (0);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		handle_close(param);
 }
 
 void	ft_mlx_events(t_rt *rt)
 {
-	mlx_key_hook(rt->mlx.window, hande_esc, rt);
-	mlx_hook(rt->mlx.window, 17, 0, handle_close, rt);
+	mlx_key_hook(rt->mlx.ptr, handle_esc, rt);
+	mlx_close_hook(rt->mlx.ptr, handle_close, rt);
 	mlx_loop(rt->mlx.ptr);
-	handle_close(rt);
 }

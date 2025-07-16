@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 17:27:36 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:36:13 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIDTH 1900.0
 # define HEIGHT 1100.0
 # define PI 3.1415926535897932385
-#define CHECKR_SCALE 10
+# define CHECKR_SCALE 10
 
 # define AMBIENT 0
 # define DIFFUSE 1

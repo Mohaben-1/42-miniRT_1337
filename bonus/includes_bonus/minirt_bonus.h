@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:15:01 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 19:51:12 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:31:55 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,15 +146,31 @@ int				hit_cylinder(t_cylinder *cyl, t_ray *ray, t_variation t,
 int				hit_cone(t_cone cone, t_ray *ray, t_variation t,
 					t_hit_data *hit_data);
 t_color			checker_cone(t_hit *hit, t_cone *cone);
+void			update_cone_hit_data(t_cone cone, t_ray *ray,
+					t_hit_data *hit_data);
+t_quadratic		solve_cone_quadra(t_ray *ray, t_vec origin_vertex,
+					t_cone cone);
+void			set_data_hit_cone(t_hit_data *hit_data, double root,
+					t_vec point);
+t_quadratic		find_quadra_root(t_quadratic quadra);
+t_material		get_material(t_object_list *scene, int id);
+t_hit_data		init_hit_data(void);
+t_object		*get_object_by_id(t_object_list *scene, int id);
 t_color			apply_checkerboard(t_hit *hit, t_object *obj);
 t_vec			calculate_bump_normal(t_hit_data *hit_data,
 					t_material *material, t_object *obj);
 void			free_texture(t_texture *texture);
-t_color			apply_png_texture(t_hit *hit, t_object *obj, t_material *material);
+t_color			apply_png_texture(t_hit *hit, t_object *obj,
+					t_material *material);
 t_color			sample_texture(t_texture *texture, double u, double v);
-void			get_sphere_uv(t_vec point, t_sphere *sphere, double *u, double *v);
-void			get_plane_uv(t_vec point, t_plane *plane, double *u, double *v);
-void			get_cylinder_uv(t_vec point, t_cylinder *cyl, double *u, double *v);
+void			get_sphere_uv(t_vec point, t_sphere *sphere,
+					double *u, double *v);
+void			get_plane_uv(t_vec point, t_plane *plane,
+					double *u, double *v);
+void			get_cylinder_uv(t_vec point, t_cylinder *cyl,
+					double *u, double *v);
 void			get_cone_uv(t_vec point, t_cone *cone, double *u, double *v);
+t_color			calculate_lighting_contribution(t_material material,
+					t_light_list *lights, t_hit *hit, t_object_list *scene);
 
 #endif

@@ -6,32 +6,11 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 13:36:53 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/15 21:15:09 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:35:01 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/minirt_bonus.h"
-
-t_material	get_material(t_object_list *scene, int id)
-{
-	t_material	material;
-	t_object	*current;
-
-	current = scene->head;
-	while (current)
-	{
-		if (id == current->id && current->type == OBJ_PLANE)
-			material = current->plane->material;
-		else if (id == current->id && current->type == OBJ_SPHERE)
-			material = current->sphere->material;
-		else if (id == current->id && current->type == OBJ_CYLINDER)
-			material = current->cylinder->material;
-		else if (id == current->id && current->type == OBJ_CONE)
-			material = current->cone->material;
-		current = current->next;
-	}
-	return (material);
-}
 
 static int	is_shadowed(t_vec point, t_light light,
 				t_object_list *scene, int skip_id)
@@ -58,41 +37,47 @@ static int	is_shadowed(t_vec point, t_light light,
 	return (0);
 }
 
-t_hit_data	init_hit_data(void)
+static void	process_texture(t_material *material, t_hit *hit, t_object *hit_obj)
 {
-	t_hit_data	new;
-
-	new.point = vec_create(0.0, 0.0, 0.0);
-	new.normal = vec_create(0.0, 0.0, 0.0);
-	new.t = 0.0;
-	new.is_front_face = false;
-	new.object_id = -1;
-	new.skip_id = -1;
-	return (new);
+	if (material->texture_type == TEX_CHECKER)
+		material->color = apply_checkerboard(hit, hit_obj);
+	else if (material->texture_type == TEX_BUMP)
+	{
+		hit->hit_data->normal = calculate_bump_normal(hit->hit_data,
+				material, hit_obj);
+	}
 }
 
-t_object *get_object_by_id(t_object_list *scene, int id)
+t_color	calculate_lighting_contribution(t_material material,
+	t_light_list *lights, t_hit *hit, t_object_list *scene)
 {
-	t_object *obj = scene->head;
-	while (obj)
+	t_light_list	*current;
+	t_color			final_color;
+	t_color			light_contribution;
+	int				in_shadow;
+
+	final_color = vec_create(0, 0, 0);
+	current = lights;
+	while (current)
 	{
-		if (obj->id == id)
-			return obj;
-		obj = obj->next;
+		in_shadow = is_shadowed(hit->hit_data->point, current->light, scene,
+				hit->hit_data->object_id);
+		vec_negative(&hit->ray->direction);
+		light_contribution = compute_lighting(material, current->light,
+				hit, in_shadow);
+		final_color = vec_add(final_color, light_contribution);
+		current = current->next;
 	}
-	return NULL;
+	return (final_color);
 }
 
 t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 {
-	t_light_list	*current;
 	t_hit			hit;
 	t_hit_data		hit_data;
-	int				in_shadow;
 	t_color			final_color;
-	t_color			light_contribution;
 	t_material		material;
-	t_object 	*hit_obj;
+	t_object		*hit_obj;
 
 	hit.variation.min = 0;
 	hit.variation.max = HUGE_VAL;
@@ -103,24 +88,9 @@ t_color	compute_ray_color(t_ray ray, t_object_list *scene, t_light_list *lights)
 	{
 		material = get_material(scene, hit.hit_data->object_id);
 		hit_obj = get_object_by_id(scene, hit_data.object_id);
-		if (material.texture_type == TEX_CHECKER)
-			material.color = apply_checkerboard(&hit, hit_obj);
-		else if (material.texture_type == TEX_BUMP)
-		{
-			// material.color = apply_png_texture(&hit, hit_obj, &material);
-			hit.hit_data->normal = calculate_bump_normal(hit.hit_data, &material, hit_obj);
-		}
-		final_color = vec_create(0, 0, 0);
-		current = lights;
-		while (current)
-		{
-			in_shadow = is_shadowed(hit.hit_data->point, current->light, scene,
-				hit.hit_data->object_id);
-			vec_negative(&hit.ray->direction);
-			light_contribution = compute_lighting(material, current->light, &hit, in_shadow);
-			final_color = vec_add(final_color, light_contribution);
-			current = current->next;
-		}
+		process_texture(&material, &hit, hit_obj);
+		final_color = calculate_lighting_contribution(material, lights,
+				&hit, scene);
 		final_color.r = fmin(1.0, final_color.r);
 		final_color.g = fmin(1.0, final_color.g);
 		final_color.b = fmin(1.0, final_color.b);

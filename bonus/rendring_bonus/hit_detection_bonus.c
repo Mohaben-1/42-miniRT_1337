@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 15:19:39 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/15 11:22:32 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:45:21 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,22 @@ int	set_closest_hit(double *closest, t_hit_data *tmp_hit,
 	return (1);
 }
 
+static int	check_object_hit(t_object *obj, t_ray *ray, t_variation current_t,
+	t_hit_data *tmp_hit)
+{
+	if (obj->type == OBJ_SPHERE)
+		return (hit_sphere(*(obj->sphere), ray, current_t, tmp_hit));
+	else if (obj->type == OBJ_PLANE)
+		return (hit_plane(*(obj->plane), ray, current_t, tmp_hit));
+	else if (obj->type == OBJ_CONE)
+		return (hit_cone(*(obj->cone), ray, current_t, tmp_hit));
+	else if (obj->type == OBJ_CYLINDER)
+		return (hit_cylinder(obj->cylinder, ray, current_t, tmp_hit));
+	return (0);
+}
+
 int	find_closest_hit(t_object_list *list, t_ray *ray,
-			t_variation t, t_hit_data *closest_hit)
+	t_variation t, t_hit_data *closest_hit)
 {
 	t_object	*obj;
 	t_hit_data	tmp_hit;
@@ -37,16 +51,7 @@ int	find_closest_hit(t_object_list *list, t_ray *ray,
 	{
 		current_t.min = t.min;
 		current_t.max = close_t;
-		if (obj->type == OBJ_SPHERE
-			&& hit_sphere(*(obj->sphere), ray, current_t, &tmp_hit))
-			hited = set_closest_hit(&close_t, &tmp_hit, closest_hit, obj->id);
-		else if (obj->type == OBJ_PLANE
-			&& hit_plane(*(obj->plane), ray, current_t, &tmp_hit))
-			hited = set_closest_hit(&close_t, &tmp_hit, closest_hit, obj->id);
-		else if (obj->type == OBJ_CONE && hit_cone(*(obj->cone), ray, current_t, &tmp_hit))
-			hited = set_closest_hit(&close_t, &tmp_hit, closest_hit, obj->id);
-		else if (obj->type == OBJ_CYLINDER
-			&& hit_cylinder(obj->cylinder, ray, current_t, &tmp_hit))
+		if (check_object_hit(obj, ray, current_t, &tmp_hit))
 			hited = set_closest_hit(&close_t, &tmp_hit, closest_hit, obj->id);
 		obj = obj->next;
 	}

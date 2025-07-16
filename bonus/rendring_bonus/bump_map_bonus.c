@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:18:23 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 19:03:33 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:38:21 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_object_uv(t_hit_data *hit_data, t_object *obj,
 }
 
 static void	calculate_tangent_vectors(t_vec normal, t_vec *tangent,
-    t_vec *bitangent)
+	t_vec *bitangent)
 {
 	t_vec	up;
 

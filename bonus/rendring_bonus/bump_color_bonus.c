@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 19:50:45 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 19:51:20 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:38:10 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_color	apply_png_texture(t_hit *hit, t_object *obj, t_material *material)
 {
 	double	u;
 	double	v;
-	
+
 	if (!material->texture || !material->texture->texture)
 		return (material->color);
 	if (obj->type == OBJ_SPHERE)
@@ -31,4 +31,3 @@ t_color	apply_png_texture(t_hit *hit, t_object *obj, t_material *material)
 		return (material->color);
 	return (sample_texture(material->texture, u, v));
 }
-

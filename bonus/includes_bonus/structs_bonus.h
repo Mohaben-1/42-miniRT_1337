@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 22:36:13 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/19 22:04:09 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_camera
 {
 	double	viewport_height;
 	double	viewport_width;
-	double	focal_len;
 	double	fov;
 	t_vec	horizontal;
 	t_vec	vertical;

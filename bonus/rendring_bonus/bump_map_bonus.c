@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:18:23 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/15 22:38:21 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/21 12:10:42 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_vec	apply_bump_perturbation(t_vec normal, t_vec tangent,
 	t_vec	bitangent_offset;
 	double	bump_strength;
 
-	bump_strength = 0.5;
+	bump_strength = 1.0;
 	tangent_offset = vec_scale(tangent, (height - 0.5) * bump_strength);
 	bitangent_offset = vec_scale(bitangent, (height - 0.5) * bump_strength);
 	perturbation = vec_add(tangent_offset, bitangent_offset);
@@ -60,7 +60,7 @@ static double	get_bump_height(t_material *material, double u, double v)
 
 	bump_color = sample_texture(material->texture, u, v);
 	height = 0.299 * bump_color.r + 0.587 * bump_color.g + 0.114 * bump_color.b;
-	height = (height - 0.5) * 2.0 + 0.5;
+	height = (height - 0.5) * 3.0 + 0.5;
 	height = fmax(0.0, fmin(1.0, height));
 	return (height);
 }

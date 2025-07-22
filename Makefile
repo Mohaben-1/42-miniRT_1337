@@ -1,5 +1,6 @@
 # Project Configuration
 NAME		= miniRT
+NAME_BONUS	= miniRT_bonus
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 MLX_DIR		= MLX42
@@ -56,16 +57,19 @@ NC			= \033[0m
 
 all: $(NAME)
 
+bonus: $(NAME_BONUS)
+
+
+
 $(NAME): $(OBJS) $(MLX_LIB)
-	@rm -f $(OBJ_BNS)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(GREEN)Successfully compiled $(NAME)$(NC)"
 
-bonus: $(OBJS_BNS) $(MLX_LIB)
-	@rm -f $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_BNS) -o $(NAME) $(MLX_FLAGS)
-	@echo "$(GREEN)Successfully compiled $(NAME) with bonus$(NC)"
-	@touch bonus
+$(NAME_BONUS): $(OBJS_BNS) $(MLX_LIB)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_BNS) -o $(NAME_BONUS) $(MLX_FLAGS)
+	@echo "$(GREEN)Successfully compiled $(NAME_BONUS)$(NC)"
+
+
 
 %_bonus.o: %_bonus.c Bonus/includes_bonus/minirt_bonus.h Bonus/includes_bonus/structs_bonus.h Bonus/includes_bonus/errors_bonus.h
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -80,9 +84,9 @@ clean:
 	@echo "$(RED)Removed object files$(NC)"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "$(RED)Removed $(NAME)$(NC)"
+	@rm -f $(NAME) $(NAME_BONUS)
+	@echo "$(RED)Removed $(NAME) and $(NAME_BONUS)$(NC)"
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re bonus

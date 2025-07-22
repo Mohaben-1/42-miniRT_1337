@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 20:06:18 by ahouass           #+#    #+#             */
-/*   Updated: 2025/07/08 17:27:02 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:26:42 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_ray	generate_ray(t_camera *camera, t_vec normal)
 	new.origin = camera->origin;
 	new.direction = vec_normalize(vec_sub(
 				vec_add(
-					vec_add(camera->lower_left_corner,
+					vec_add(camera->viewport_origin,
 						vec_scale(camera->horizontal, normal.x)),
 					vec_scale(camera->vertical, normal.y)),
 				camera->origin));
@@ -60,7 +60,7 @@ static void	initialize_camera(t_camera *camera, double aspect_ratio)
 	v = vec_cross(u, w);
 	camera->horizontal = vec_scale(u, camera->viewport_width);
 	camera->vertical = vec_scale(v, camera->viewport_height);
-	camera->lower_left_corner = vec_sub(
+	camera->viewport_origin = vec_sub(
 			vec_sub(
 				vec_sub(camera->origin,
 					vec_div(vec_negative(&camera->horizontal), 2)),

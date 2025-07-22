@@ -7,7 +7,7 @@ MLX_DIR		= MLX42
 MLX_LIB		= $(MLX_DIR)/build/libmlx42.a
 MLX_FLAGS	= -L$(MLX_DIR)/build -lmlx42 -L $(HOME)/.brew/opt/glfw/lib -lglfw -framework OpenGL -framework Cocoa -framework IOKit
 
-# Source files
+# Mandatory source files
 SRCS		= mandatory/main.c \
 			mandatory/check/check_ambient.c mandatory/check/check_arg.c mandatory/check/check_camera.c mandatory/check/check_cylinder.c mandatory/check/check_light.c \
 			mandatory/check/check_plane.c mandatory/check/check_sphere.c mandatory/check/check_utils.c mandatory/check/check_utils2.c mandatory/check/check_vecs.c \
@@ -22,7 +22,7 @@ SRCS		= mandatory/main.c \
 			mandatory/utils/ft_strdup.c mandatory/utils/ft_strncmp.c mandatory/utils/get_next_line.c mandatory/utils/object_list.c mandatory/utils/ft_strjoin.c mandatory/utils/ft_strchr.c \
 			mandatory/utils/ft_atof.c mandatory/utils/ft_calloc.c mandatory/utils/ft_empty_str.c mandatory/utils/ft_memset.c mandatory/utils/ft_putstr_fd.c mandatory/utils/ft_strcmp.c mandatory/utils/ft_strlen.c mandatory/utils/ft_substr.c mandatory/utils/ft_isalnum.c
 
-
+# Bonus source files
 SRCS_BNS =  Bonus/main_bonus.c \
 			Bonus/check_bonus/check_ambient_bonus.c Bonus/check_bonus/check_arg_bonus.c Bonus/check_bonus/check_camera_bonus.c \
 			Bonus/check_bonus/check_cylinder_bonus.c Bonus/check_bonus/check_light_bonus.c Bonus/check_bonus/check_plane_bonus.c \
@@ -44,7 +44,6 @@ SRCS_BNS =  Bonus/main_bonus.c \
 
 # Object files
 OBJS		= $(SRCS:.c=.o)
-
 OBJS_BNS	= $(SRCS_BNS:.c=.o)
 
 # Header files
@@ -60,7 +59,6 @@ all: $(NAME)
 bonus: $(NAME_BONUS)
 
 
-
 $(NAME): $(OBJS) $(MLX_LIB)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(GREEN)Successfully compiled $(NAME)$(NC)"
@@ -68,7 +66,6 @@ $(NAME): $(OBJS) $(MLX_LIB)
 $(NAME_BONUS): $(OBJS_BNS) $(MLX_LIB)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS_BNS) -o $(NAME_BONUS) $(MLX_FLAGS)
 	@echo "$(GREEN)Successfully compiled $(NAME_BONUS)$(NC)"
-
 
 
 %_bonus.o: %_bonus.c Bonus/includes_bonus/minirt_bonus.h Bonus/includes_bonus/structs_bonus.h Bonus/includes_bonus/errors_bonus.h
@@ -89,4 +86,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all bonus clean fclean re

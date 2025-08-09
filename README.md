@@ -68,7 +68,7 @@ You will learn to:
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/Mohaben-1/42-miniRT_1337.git
-cd 42-miniRT_1337.git
+cd 42-miniRT_1337
 ```
 
 ### 2. Compile the Program  

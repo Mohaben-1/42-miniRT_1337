@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:41:40 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/22 12:26:42 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:08:17 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_img
 typedef struct s_mlx
 {
 	void	*ptr;
-	void	*window;
 }	t_mlx;
 
 typedef struct s_vec

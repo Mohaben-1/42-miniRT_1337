@@ -5,7 +5,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 MLX_DIR		= MLX42
 MLX_LIB		= $(MLX_DIR)/build/libmlx42.a
-MLX_FLAGS	= -L$(MLX_DIR)/build -lmlx42 -L $(HOME)/.brew/opt/glfw/lib -lglfw -framework OpenGL -framework Cocoa -framework IOKit
+MLX_FLAGS	= -L$(MLX_DIR)/build -lmlx42 -L /goinfre/$(USER)/homebrew/opt/glfw/lib -lglfw -framework OpenGL -framework Cocoa -framework IOKit
 
 # Mandatory source files
 SRCS		= mandatory/main.c \
@@ -15,7 +15,7 @@ SRCS		= mandatory/main.c \
 			mandatory/math/vec_ops.c mandatory/math/vec_ops_2.c mandatory/math/vec_create.c mandatory/math/vec_utils.c \
 			mandatory/rendring/color_rgb.c mandatory/rendring/cylinder_utils2.c mandatory/rendring/hit_cylinder.c mandatory/rendring/hit_plane.c \
 			mandatory/rendring/hit_sphere.c mandatory/rendring/hit_detection.c mandatory/rendring/lighting.c mandatory/rendring/ray_color.c \
-			mandatory/rendring/render_scene.c mandatory/rendring/rendering.c mandatory/rendring/determine_surface_normal.c \
+			mandatory/rendring/render_scene.c mandatory/rendring/determine_surface_normal.c \
 			mandatory/rendring/project_onto_plane.c mandatory/rendring/cylinder_utils.c mandatory/rendring/ray_shadow.c \
 			mandatory/mlx_utils/ft_mlx_events.c mandatory/mlx_utils/mlx_init.c mandatory/mlx_utils/mlx_pixel_draw.c \
 			mandatory/utils/free.c mandatory/utils/ft_atoi.c mandatory/utils/ft_count_args.c mandatory/utils/ft_isspace.c mandatory/utils/ft_putnbr_fd.c mandatory/utils/ft_split.c mandatory/utils/ft_trim_line.c \
@@ -38,7 +38,7 @@ SRCS_BNS =  Bonus/main_bonus.c \
 			Bonus/rendring_bonus/color_rgb_bonus.c Bonus/rendring_bonus/cylinder_utils2_bonus.c Bonus/rendring_bonus/hit_cylinder_bonus.c Bonus/rendring_bonus/hit_plane_bonus.c \
 			Bonus/rendring_bonus/hit_sphere_bonus.c Bonus/rendring_bonus/hit_detection_bonus.c Bonus/rendring_bonus/lighting_bonus.c Bonus/rendring_bonus/ray_color_bonus.c \
 			Bonus/rendring_bonus/bump_map_utils_bonus.c Bonus/rendring_bonus/bump_map_bonus.c Bonus/rendring_bonus/checkerboard_cone_bonus.c Bonus/rendring_bonus/bump_color_bonus.c \
-			Bonus/rendring_bonus/render_scene_bonus.c Bonus/rendring_bonus/rendering_bonus.c Bonus/rendring_bonus/determine_surface_normal_bonus.c Bonus/rendring_bonus/hit_cone_bonus.c \
+			Bonus/rendring_bonus/render_scene_bonus.c Bonus/rendring_bonus/determine_surface_normal_bonus.c Bonus/rendring_bonus/hit_cone_bonus.c \
 			Bonus/rendring_bonus/project_onto_plane_bonus.c Bonus/rendring_bonus/cylinder_utils_bonus.c Bonus/rendring_bonus/ray_shadow_bonus.c Bonus/rendring_bonus/checkerboard_bonus.c \
 
 

@@ -6,7 +6,7 @@
 /*   By: mohaben- <mohaben-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:38:33 by mohaben-          #+#    #+#             */
-/*   Updated: 2025/07/16 16:31:55 by mohaben-         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:35:11 by mohaben-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	init_rt(&rt, fd);
 	close(fd);
 	ft_putstr_fd("🎨 Rendering scene... Please wait.\n", 1);
-	render(&rt);
+	render_scene(&rt, rt.scene);
 	ft_putstr_fd("✅ Scene loaded and ready! Use ESC to exit.\n", 1);
 	ft_mlx_events(&rt);
 	return (0);

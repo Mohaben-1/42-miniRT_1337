@@ -63,10 +63,49 @@ You will learn to:
 
 ---
 
+## 🖥️ How to Build & Run
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Mohaben-1/42-miniRT_1337.git
+cd 42-miniRT_1337.git
+```
+
+### 2. Compile the Program  
+
+- **dependencies: **
+  If your system has neither GLFW nor CMake its highly recommended you use brew to install those missing dependencies.
+```bash
+  brew install glfw
+  brew install cmake
+```
+Use the provided `Makefile` to compile:  
+- **Without Bonus**  
+  ```bash  
+  make  
+  ```  
+
+- **With Bonus**  
+  ```bash  
+  make bonus
+  ```  
+
+### 3. Run the Program
+
+The executable takes a scene file as an argument. scenes files are provided in the scenes (for mandatory) and scenes_bonus (for bonus) directory.
+
+```bash
+./minirt scenes/example.rt
+```
+
+Press ESC or close the window to exit.
+
+---
+
 ## 🛠️ Tools & Technologies
 
 - **Language**: C (ISO C99)
-- **Graphics Library**: [MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx)
+- **Graphics Library**: [MiniLibX](https://github.com/codam-coding-college/MLX42)
 - **Math**:
   - Vector algebra
   - Dot & cross product
@@ -111,6 +150,34 @@ You will learn to:
 
 ---
 
+## 📝 Scene File Format (.rt)
+Example:
+
+```plaintext
+
+A 0.2 255,255,255
+C 0,0,0 0,0,1 70
+L 10,0,0 0.6 255,255,255
+sp 0,0,20 20 255,0,0
+pl 0,-5,0 0,1,0 0,255,0
+cy 50,0,20 0,1,0 14.2 21.42 10,0,255
+```
+Legend:
+
+A: Ambient light (ratio, RGB)
+
+C: Camera (position, direction, FOV)
+
+L: Light (position, brightness, RGB)
+
+sp: Sphere (position, diameter, RGB)
+
+pl: Plane (position, normal, RGB)
+
+cy: Cylinder (position, normal, diameter, height, RGB)
+
+
+---
 
 ## 📖 Key Concepts
 
@@ -247,68 +314,6 @@ Shadows are computed by casting a **shadow ray** from the intersection point tow
 3. If there is no intersection:
    - Use the background color.
 4. Repeat for all pixels to produce the final image.
-
----
-
-
-## 🖥️ How to Build & Run
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Mohaben-1/42-miniRT_1337.git
-cd 42-miniRT_1337.git
-```
-
-### 2. Compile the Program  
-
-Use the provided `Makefile` to compile:  
-- **Without Bonus**  
-  ```bash  
-  make  
-  ```  
-
-- **With Bonus**  
-  ```bash  
-  make bonus
-  ```  
-
-### 3. Run the Program
-
-The executable takes a scene file as an argument. scenes files are provided in the scenes (for mandatory) and scenes_bonus (for bonus) directory.
-
-```bash
-./minirt scenes/example.rt
-```
-
-Press ESC or close the window to exit.
-
-
-## 📝 Scene File Format (.rt)
-Example:
-
-```plaintext
-
-A 0.2 255,255,255
-C 0,0,0 0,0,1 70
-L 10,0,0 0.6 255,255,255
-sp 0,0,20 20 255,0,0
-pl 0,-5,0 0,1,0 0,255,0
-cy 50,0,20 0,1,0 14.2 21.42 10,0,255
-```
-Legend:
-
-A: Ambient light (ratio, RGB)
-
-C: Camera (position, direction, FOV)
-
-L: Light (position, brightness, RGB)
-
-sp: Sphere (position, diameter, RGB)
-
-pl: Plane (position, normal, RGB)
-
-cy: Cylinder (position, normal, diameter, height, RGB)
-
 
 ---
 

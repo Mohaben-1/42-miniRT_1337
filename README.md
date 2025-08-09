@@ -73,7 +73,7 @@ cd 42-miniRT_1337.git
 
 ### 2. Compile the Program  
 
-- **dependencies: **
+- **dependencies:**
   If your system has neither GLFW nor CMake its highly recommended you use brew to install those missing dependencies.
 ```bash
   brew install glfw
